@@ -53,7 +53,7 @@ option (`-l, --list`) to return the top ten matches:
         48 track(s) matched your search query.
 
 
-        Alabama: Fireworks  # WRONG! I want the Katy Perry version.
+        Alabama: Fireworks
         -------------------
 
         There are people in this country who work hard every day
