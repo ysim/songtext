@@ -9,9 +9,12 @@ API_URL = 'http://api.lyricsnmusic.com/songs'
 try:
     API_KEY = os.environ['LYRICSNMUSIC_API_KEY']
 except KeyError:
+    print
     print "You must have the LYRICSNMUSIC_API_KEY environment variable set."
-    print "If you don't have one, you can get one from here: "
+    print "If you don't have an API key, you can get one from here:"
+    print
     print "\thttp://www.lyricsnmusic.com/api_keys/new"
+    print
     sys.exit(1)
 CSS_SELECTOR = "pre[itemprop='description']"
 
@@ -24,7 +27,13 @@ def get_response(query):
 
 def get_track_url(response):
     json_data = response.json()
-    print "{0} track(s) matched your search query.\n".format(len(json_data))
+    num_matches = len(json_data)
+    if num_matches == 0:
+        print
+        print "No tracks matching your query were found."
+        print
+        sys.exit(1)
+    print "{0} track(s) matched your search query.\n".format(num_matches)
     return json_data[0]['url']
 
 
