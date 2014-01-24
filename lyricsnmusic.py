@@ -1,4 +1,3 @@
-import sys
 import os
 
 from lxml import html
@@ -14,8 +13,7 @@ except KeyError:
     print "If you don't have an API key, you can get one from here:"
     print
     print "\thttp://www.lyricsnmusic.com/api_keys/new"
-    print
-    sys.exit(1)
+    raise
 CSS_SELECTOR = "pre[itemprop='description']"
 
 
@@ -31,7 +29,7 @@ class Track(object):
 
     def get_lyrics(self):
         try:
-            return self.html_string.cssselect(CSS_SELECTOR)[0].text_content()
+            return "{0}\n\n".format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
         except IndexError:
             print
             print "Lyrics could not be fetched. For more details, go to:"
@@ -59,38 +57,59 @@ class TrackList(object):
     def get_track_url(self, index=0):
         return self.json[index]['url']
 
+    def get_info(self, index=0):
+        output = ""
+        line1 = u'{0}: {1}\n'.format(
+            self.json[index]['artist']['name'],
+            self.json[index]['title']
+        )
+        line2 = "{0}\n".format("-" * len(line1))
+        output += line1
+        output += line2
+        return output
+
     def get_list(self, limit=10):
         output = ""
         for index, track in enumerate(self.json[:limit]):
-            line1 = u'{0:>3}. {1}: {2}\n'.format(
+            viewable = track['viewable']
+            line = u'{0:>3}. {1}: {2}'.format(
                 index,
                 track['artist']['name'],
                 track['title'],
+                track['viewable'],
             )
-            line2 = u'     ("{0}"...)\n'.format(track['snippet'].splitlines()[0].strip())
-            output += line1
-            output += line2
+            if viewable:
+                line += u'\n     ("{0}"...)\n'.format(track['snippet'].splitlines()[0].strip())
+            else:
+                line += u' (full lyrics unavailable)\n'
+            output += line
         return output
 
 
 def check_matches(tracklist_object):
     count = tracklist_object.count
     if count == 0:
-        print
-        print "No tracks matching your query were found."
-        print
-        sys.exit(1)
-    print "{0} track(s) matched your search query.\n".format(count)
-
-
-def get_first_track(query):
-    track_list = TrackList(query)
-    check_matches(track_list)
-    track = Track(track_list.get_track_url())
-    print track.get_lyrics()
+        print "\nNo tracks matching your query were found.\n\n"
+        return False
+    print "\n{0} track(s) matched your search query.\n\n".format(count)
+    return True
 
 
 def get_track_list(query, limit):
     track_list = TrackList(query)
-    check_matches(track_list)
+    matches_found = check_matches(track_list)
+    if not matches_found:
+        return 1
     print track_list.get_list(limit)
+    return 0
+
+
+def get_track(query, index):
+    track_list = TrackList(query)
+    matches_found = check_matches(track_list)
+    if not matches_found:
+        return 1
+    track = Track(track_list.get_track_url(index))
+    print track_list.get_info(int(index))
+    print track.get_lyrics()
+    return 0
