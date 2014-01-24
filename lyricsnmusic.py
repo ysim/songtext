@@ -68,6 +68,9 @@ class TrackList(object):
         output += line2
         return output
 
+    def is_track_viewable(self, index):
+        return self.json[index]['viewable']
+
     def get_list(self, limit=10):
         output = ""
         for index, track in enumerate(self.json[:limit]):
@@ -86,28 +89,33 @@ class TrackList(object):
         return output
 
 
-def check_matches(tracklist_object):
+def check_matches(tracklist_object, query):
     count = tracklist_object.count
     if count == 0:
         print "\nNo tracks matching your query were found.\n\n"
         return False
-    print "\n{0} track(s) matched your search query.\n\n".format(count)
+    print '\n{0} track(s) matched your search query "{1}".\n\n'.format(count, query)
     return True
 
 
 def get_track_list(query, limit):
     track_list = TrackList(query)
-    matches_found = check_matches(track_list)
-    if not matches_found:
+    num_matches = check_matches(track_list, query)
+    if not num_matches:
         return 1
+    print "Displaying top {0} matches (out of {1}):".format(limit, num_matches)
     print track_list.get_list(limit)
     return 0
 
 
 def get_track(query, index):
     track_list = TrackList(query)
-    matches_found = check_matches(track_list)
-    if not matches_found:
+    num_matches = check_matches(track_list, query)
+    if not num_matches:
+        return 1
+    if not track_list.is_track_viewable(index):
+        print "The requested track is not viewable."
+        print
         return 1
     track = Track(track_list.get_track_url(index))
     print track_list.get_info(int(index))
