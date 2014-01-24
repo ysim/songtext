@@ -2,6 +2,9 @@
 
 Get song lyrics in the command line.
 
+Inspired by [@gleitz](https://twitter.com/gleitz)'s
+[howdoi](https://github.com/gleitz/howdoi).
+
 
 ## Usage
 
