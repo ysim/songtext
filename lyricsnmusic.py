@@ -16,7 +16,7 @@ except KeyError:
     raise
 CSS_SELECTOR = "pre[itemprop='description']"
 
-API_PARAMETERS = {
+SEARCH_PARAMETERS = {
     'query': 'q',
     'artist': 'artist',
     'title': 'track'
@@ -35,13 +35,14 @@ class Track(object):
 
     def get_lyrics(self):
         try:
-            return "{0}\n\n".format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
+            print "{0}\n\n".format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
+            return 0
         except IndexError:
             print
             print "Lyrics could not be fetched. For more details, go to:"
             print
             print "\t{0}".format(self.url)
-            return ""
+            return 1
 
 
 class TrackList(object):
@@ -53,9 +54,9 @@ class TrackList(object):
 
     def get_response(self, args):
         params = { 'api_key': API_KEY }
-        for arg in ('query', 'artist'):
+        for arg in SEARCH_PARAMETERS.keys():
             if args[arg] is not None:
-                params[API_PARAMETERS[arg]] = args[arg]
+                params[SEARCH_PARAMETERS[arg]] = args[arg]
         response = requests.get(API_URL, params=params)
         return response
 
@@ -128,5 +129,4 @@ def get_track(args):
         return 1
     track = Track(track_list.get_track_url(args['index']))
     print track_list.get_info(int(args['index']))
-    print track.get_lyrics()
-    return 0
+    return track.get_lyrics()
