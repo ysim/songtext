@@ -15,7 +15,7 @@ import lyricsnmusic
 
 def get_song_lyrics(args):
     query_args = ' '.join(args['query'])
-    return lyricsnmusic.search(query_args)
+    return lyricsnmusic.get_first_track(query_args)
 
 
 def get_parser():

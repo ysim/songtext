@@ -19,32 +19,59 @@ except KeyError:
 CSS_SELECTOR = "pre[itemprop='description']"
 
 
-def get_response(query):
-    params = { 'api_key': API_KEY, 'q': query }
-    response = requests.get(API_URL, params=params)
-    return response
+class Track(object):
+
+    def __init__(self, url):
+        self.url = url
+        self.response = requests.get(url)
+
+    @property
+    def html_string(self):
+        return html.document_fromstring(self.response.text)
+
+    def get_lyrics(self):
+        try:
+            return self.html_string.cssselect(CSS_SELECTOR)[0].text_content()
+        except IndexError:
+            print
+            print "Lyrics could not be fetched. For more details, go to:"
+            print
+            print "\t{0}".format(self.url)
+            return ""
 
 
-def get_track_url(response):
-    json_data = response.json()
-    num_matches = len(json_data)
-    if num_matches == 0:
+class TrackList(object):
+
+    def __init__(self, query=None):
+        self.query = query
+        self.response = self.get_response(query)
+        self.json = self.response.json()
+
+    def get_response(self, query=None):
+        params = { 'api_key': API_KEY, 'q': query }
+        response = requests.get(API_URL, params=params)
+        return response
+
+    @property
+    def count(self):
+        return len(self.json)
+
+    def get_track_url(self, index=0):
+        return self.json[index]['url']
+
+
+def check_matches(tracklist_object):
+    count = tracklist_object.count
+    if count == 0:
         print
         print "No tracks matching your query were found."
         print
         sys.exit(1)
-    print "{0} track(s) matched your search query.\n".format(num_matches)
-    return json_data[0]['url']
+    print "{0} track(s) matched your search query.\n".format(count)
 
 
-def get_track_lyrics(url):
-    track_page_response = requests.get(url)
-    track_page_html = html.document_fromstring(track_page_response.text)
-    matched_html_elements = track_page_html.cssselect(CSS_SELECTOR)
-    return matched_html_elements[0].text_content()
-
-
-def search(query):
-    response = get_response(query)
-    track_url = get_track_url(response)
-    return get_track_lyrics(track_url)
+def get_first_track(query):
+    track_list = TrackList(query)
+    check_matches(track_list)
+    track = Track(track_list.get_track_url())
+    return track.get_lyrics()
