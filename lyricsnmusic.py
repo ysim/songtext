@@ -19,7 +19,8 @@ CSS_SELECTOR = "pre[itemprop='description']"
 SEARCH_PARAMETERS = {
     'query': 'q',
     'artist': 'artist',
-    'title': 'track'
+    'title': 'track',
+    'words': 'lyrics',
 }
 
 
