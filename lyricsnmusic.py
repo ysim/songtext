@@ -90,7 +90,7 @@ def get_first_track(query):
     print track.get_lyrics()
 
 
-def get_track_list(query):
+def get_track_list(query, limit):
     track_list = TrackList(query)
     check_matches(track_list)
-    print track_list.get_list()
+    print track_list.get_list(limit)
