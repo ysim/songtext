@@ -36,7 +36,7 @@ class Track(object):
 
     def get_lyrics(self):
         try:
-            print "{0}\n\n".format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
+            print u'{0}\n\n'.format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
             return 0
         except IndexError:
             print
@@ -111,10 +111,9 @@ def check_matches(tracklist_object):
 
 def get_track_list(args):
     track_list = TrackList(args)
-    num_matches = check_matches(track_list)
-    if not num_matches:
+    if not check_matches(track_list):
         return 1
-    print "Displaying top {0} matches (out of {1}):\n".format(args['limit'], num_matches)
+    print "Displaying the top {0} matches:\n".format(args['limit'])
     print track_list.get_list(args['limit'])
     return 0
 
