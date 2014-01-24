@@ -116,3 +116,7 @@ option (`-l, --list`) to return the top ten matches:
 
     That looks more correct.
 
+
+## Author
+
+Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
