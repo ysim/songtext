@@ -38,6 +38,8 @@ def get_parser():
         nargs='+')
     parser.add_argument('-t', '--title', metavar='SONG_TITLE', type=str,
         nargs='+')
+    parser.add_argument('-w', '--words', metavar='LYRICS', type=str,
+        nargs='+')
     return parser
 
 
