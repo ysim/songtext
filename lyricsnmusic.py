@@ -59,6 +59,19 @@ class TrackList(object):
     def get_track_url(self, index=0):
         return self.json[index]['url']
 
+    def get_list(self, limit=10):
+        output = ""
+        for index, track in enumerate(self.json[:limit]):
+            line1 = u'{0:>3}. {1}: {2}\n'.format(
+                index,
+                track['artist']['name'],
+                track['title'],
+            )
+            line2 = u'     ("{0}"...)\n'.format(track['snippet'].splitlines()[0].strip())
+            output += line1
+            output += line2
+        return output
+
 
 def check_matches(tracklist_object):
     count = tracklist_object.count
@@ -74,4 +87,10 @@ def get_first_track(query):
     track_list = TrackList(query)
     check_matches(track_list)
     track = Track(track_list.get_track_url())
-    return track.get_lyrics()
+    print track.get_lyrics()
+
+
+def get_track_list(query):
+    track_list = TrackList(query)
+    check_matches(track_list)
+    print track_list.get_list()
