@@ -3,6 +3,8 @@ import os
 from lxml import html
 import requests
 
+from base import BaseTrack, BaseTrackList
+
 
 API_URL = 'http://api.lyricsnmusic.com/songs'
 try:
@@ -14,7 +16,6 @@ except KeyError:
     print
     print "\thttp://www.lyricsnmusic.com/api_keys/new\n"
     raise
-CSS_SELECTOR = "pre[itemprop='description']"
 
 SEARCH_PARAMETERS = {
     'query': 'q',
@@ -24,7 +25,9 @@ SEARCH_PARAMETERS = {
 }
 
 
-class Track(object):
+class Track(BaseTrack):
+
+    CSS_SELECTOR = "pre[itemprop='description']"
 
     def __init__(self, url):
         self.url = url
@@ -36,7 +39,9 @@ class Track(object):
 
     def get_lyrics(self):
         try:
-            print u'{0}\n\n'.format(self.html_string.cssselect(CSS_SELECTOR)[0].text_content())
+            print u'{0}\n\n'.format(
+                self.html_string.cssselect(self.CSS_SELECTOR)[0].text_content()
+            )
             return 0
         except IndexError:
             print
@@ -46,12 +51,7 @@ class Track(object):
             return 1
 
 
-class TrackList(object):
-
-    def __init__(self, args):
-        self.args = args
-        self.response = self.get_response(args)
-        self.json = self.response.json()
+class TrackList(BaseTrackList):
 
     def get_response(self, args):
         params = { 'api_key': API_KEY }
@@ -60,10 +60,6 @@ class TrackList(object):
                 params[SEARCH_PARAMETERS[arg]] = args[arg]
         response = requests.get(API_URL, params=params)
         return response
-
-    @property
-    def count(self):
-        return len(self.json)
 
     def get_track_url(self, index=0):
         return self.json[index]['url']
