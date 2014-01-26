@@ -12,7 +12,7 @@ except KeyError:
     print "You must have the LYRICSNMUSIC_API_KEY environment variable set."
     print "If you don't have an API key, you can get one from here:"
     print
-    print "\thttp://www.lyricsnmusic.com/api_keys/new"
+    print "\thttp://www.lyricsnmusic.com/api_keys/new\n"
     raise
 CSS_SELECTOR = "pre[itemprop='description']"
 
