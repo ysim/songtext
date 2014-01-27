@@ -81,7 +81,7 @@ class TrackList(BaseTrackList):
     def is_track_viewable(self, index):
         return self.json[index]['viewable']
 
-    def get_list(self, limit=10):
+    def get_list(self, limit):
         output = ""
         for index, track in enumerate(self.json[:limit]):
             viewable = track['viewable']
@@ -89,7 +89,6 @@ class TrackList(BaseTrackList):
                 index,
                 track['artist']['name'],
                 track['title'],
-                track['viewable'],
             )
             if viewable:
                 line += u'\n     ("{0}"...)\n'.format(track['snippet'].splitlines()[0].strip())
