@@ -3,7 +3,8 @@
 A command-line song lyric fetcher.
 
 Inspired by [@gleitz](https://twitter.com/gleitz)'s
-[howdoi](https://github.com/gleitz/howdoi).
+[howdoi](https://github.com/gleitz/howdoi). Name from the [German word for
+"lyrics"](http://www.dict.cc/deutsch-englisch/Songtext.html).
 
 
 ## Usage
