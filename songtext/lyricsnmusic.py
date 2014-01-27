@@ -53,6 +53,10 @@ class TrackList(BaseTrackList):
         response = requests.get(API_URL, params=params)
         return response
 
+    @property
+    def count(self):
+        return len(self.json)
+
     def is_valid(self):
         if self.count == 0:
             print "\nNo tracks matching your query were found.\n\n"

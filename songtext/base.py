@@ -38,10 +38,6 @@ class BaseTrackList(object):
         raise NotImplementedError('Check the result set of the response and '
             'return True if one or more tracks matched the search query.')
 
-    @property
-    def count(self):
-        return len(self.json)
-
     def get_track_url(self, index=0):
         raise NotImplementedError('Return the URL of the requested track.')
 
