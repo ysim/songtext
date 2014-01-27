@@ -99,7 +99,8 @@ class TrackList(BaseTrackList):
             else:
                 line += u' (full lyrics unavailable)\n'
             output += line
-        return output
+        print output
+        return 0
 
 
 def get_result(args):
@@ -107,8 +108,7 @@ def get_result(args):
     if not tracklist.is_valid():
         return 1
     if args['limit'] is not None:
-        print tracklist.get_list(args['limit'])
-        return 0
+        return tracklist.get_list(args['limit'])
     if not tracklist.is_track_viewable(args['index']):
         return 1
     track = Track(tracklist.get_track_url(args['index']))
