@@ -185,7 +185,7 @@ option (`-l, --list`), which will return the top ten matches by default:
 
 | argument          | LYRICSnMUSIC          | LyricWiki         |
 |                   | `--api lyricsnmusic`  | `--api lyricwiki` |
-|-------------------|-----------------------|-------------------|
+| ----------------- | ---------------------:| -----------------:|
 | positional        | Yes                   | No                |
 | `-a`, `--artist`  | Yes                   | Yes (Mandatory)   |
 | `-t`, `--title`   | Yes                   | Yes (Mandatory)   |
