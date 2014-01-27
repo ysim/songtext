@@ -29,6 +29,10 @@ class BaseTrackList(object):
             'desired parameters (e.g. the API key) and return the response '
             'object.')
 
+    def is_valid(self):
+        raise NotImplementedError('Check the result set of the response and '
+            'return True if one or more tracks matched the search query.')
+
     @property
     def count(self):
         return len(self.json)
