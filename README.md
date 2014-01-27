@@ -117,6 +117,12 @@ option (`-l, --list`) to return the top ten matches:
     That looks more correct.
 
 
+## Supported APIs
+
+* [LYRICSnMUSIC](http://www.lyricsnmusic.com/api)
+* [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST)
+
+
 ## Author
 
 Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
