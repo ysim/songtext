@@ -9,7 +9,7 @@ class BaseTrack(object):
         self.response = requests.get(url)
 
     @property
-    def html_string(self):
+    def html_element(self):
         return html.document_fromstring(self.response.text)
 
     def get_lyrics(self):
