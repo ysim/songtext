@@ -183,8 +183,7 @@ option (`-l, --list`), which will return the top ten matches by default:
 
 ## Supported arguments options by API
 
-| argument         | LYRICSnMUSIC         | LyricWiki         |
-|                  | `--api lyricsnmusic` | `--api lyricwiki` |
+| argument         | `--api lyricsnmusic` | `--api lyricwiki` |
 | ---------------- | --------------------:| -----------------:|
 | positional       | Yes                  | No                |
 | `-a`, `--artist` | Yes                  | Yes (Mandatory)   |
