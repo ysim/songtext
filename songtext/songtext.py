@@ -26,10 +26,7 @@ def get_song_lyrics(args):
         if args[arg] is not None:
             args[arg] = ' '.join(args[arg])
 
-    if args['limit'] is not None:
-        return getattr(api, 'get_track_list')(args)
-
-    return getattr(api, 'get_track')(args)
+    return getattr(api, 'get_result')(args)
 
 
 def get_parser():
