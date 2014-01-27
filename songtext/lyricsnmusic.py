@@ -32,15 +32,8 @@ class Track(BaseTrack):
     CSS_SELECTOR = "pre[itemprop='description']"
 
     def get_lyrics(self):
-        try:
-            print u'{0}\n\n'.format(self.element.text_content())
-            return 0
-        except IndexError:
-            print
-            print "Lyrics could not be fetched. For more details, go to:"
-            print
-            print "\t{0}".format(self.url)
-            return 1
+        print u'{0}\n\n'.format(self.element.text_content())
+        return 0
 
 
 class TrackList(BaseTrackList):
