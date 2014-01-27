@@ -88,7 +88,9 @@ class TrackList(BaseTrackList):
                 track['title'],
             )
             if viewable:
-                line += u'\n     ("{0}"...)\n'.format(track['snippet'].splitlines()[0].strip())
+                line += u'\n     ("{0}"...)\n'.format(
+                    track['snippet'].splitlines()[0].strip()
+                )
             else:
                 line += u' (full lyrics unavailable)\n'
             output += line
