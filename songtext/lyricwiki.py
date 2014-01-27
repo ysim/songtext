@@ -27,7 +27,8 @@ class Track(BaseTrack):
     def get_lyrics(self):
         element = self.element
 
-        # Replace <br/> tags with \n
+        # Replace <br> tags with \n (prepend it with \n and then remove all
+        # occurrences of <br>)
         for br in element.cssselect('br'):
             br.tail = '\n' + br.tail if br.tail else '\n'
         etree.strip_elements(element, 'br', with_tail=False)
