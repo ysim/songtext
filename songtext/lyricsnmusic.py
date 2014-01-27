@@ -1,6 +1,9 @@
+# LYRICSnMUSIC API wrapper
+# Documentation: http://www.lyricsnmusic.com/api
+
+
 import os
 
-from lxml import html
 import requests
 
 from base import BaseTrack, BaseTrackList
@@ -28,14 +31,6 @@ SEARCH_PARAMETERS = {
 class Track(BaseTrack):
 
     CSS_SELECTOR = "pre[itemprop='description']"
-
-    def __init__(self, url):
-        self.url = url
-        self.response = requests.get(url)
-
-    @property
-    def html_string(self):
-        return html.document_fromstring(self.response.text)
 
     def get_lyrics(self):
         try:
