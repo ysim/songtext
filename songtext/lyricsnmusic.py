@@ -33,9 +33,7 @@ class Track(BaseTrack):
 
     def get_lyrics(self):
         try:
-            print u'{0}\n\n'.format(
-                self.html_element.cssselect(self.CSS_SELECTOR)[0].text_content()
-            )
+            print u'{0}\n\n'.format(self.element.text_content())
             return 0
         except IndexError:
             print
