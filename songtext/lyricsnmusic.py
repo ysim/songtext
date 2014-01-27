@@ -55,6 +55,13 @@ class TrackList(BaseTrackList):
         response = requests.get(API_URL, params=params)
         return response
 
+    def is_valid(self):
+        if self.count == 0:
+            print "\nNo tracks matching your query were found.\n\n"
+            return False
+        print '\n{0} track(s) matched your search query.\n\n'.format(self.count)
+        return True
+
     def get_track_url(self, index=0):
         return self.json[index]['url']
 
@@ -90,18 +97,9 @@ class TrackList(BaseTrackList):
         return output
 
 
-def check_matches(tracklist_object):
-    count = tracklist_object.count
-    if count == 0:
-        print "\nNo tracks matching your query were found.\n\n"
-        return False
-    print '\n{0} track(s) matched your search query.\n\n'.format(count)
-    return True
-
-
 def get_track_list(args):
     track_list = TrackList(args)
-    if not check_matches(track_list):
+    if not track_list.is_valid():
         return 1
     print "Displaying the top {0} matches:\n".format(args['limit'])
     print track_list.get_list(args['limit'])
@@ -110,8 +108,7 @@ def get_track_list(args):
 
 def get_track(args):
     track_list = TrackList(args)
-    num_matches = check_matches(track_list)
-    if not num_matches:
+    if not track_list.is_valid():
         return 1
     if not track_list.is_track_viewable(args['index']):
         print "The requested track is not viewable."
