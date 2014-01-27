@@ -18,8 +18,8 @@ class BaseTrack(object):
         return self.page_html.cssselect(self.CSS_SELECTOR)[0]
 
     def get_lyrics(self):
-        raise NotImplementedError('This method should return a printable '
-            'unicode string of the requested song lyrics.')
+        raise NotImplementedError('This method should print a unicode string '
+            'of the requested song lyrics and return 0 if successful, else 1.')
 
 
 class BaseTrackList(object):
