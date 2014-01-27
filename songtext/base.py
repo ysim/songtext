@@ -45,16 +45,16 @@ class BaseTrackList(object):
             return True if one or more tracks matched the search query.
         """)
 
-    def get_track_url(self, index=0):
+    def get_track_url(self, index):
         raise NotImplementedError('Return the URL of the requested track.')
 
-    def get_info(self, index=0):
+    def get_info(self, index):
         raise NotImplementedError("""
             Print the meta information of the track, such as the artist name
             and song title.
         """)
 
-    def get_list(self, limit=10):
+    def get_list(self, limit):
         raise NotImplementedError("""
             Return a formatted list of the tracks that matched the search
             query.
