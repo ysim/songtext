@@ -33,14 +33,17 @@ class Track(BaseTrack):
         etree.strip_elements(element, 'br', with_tail=False)
 
         # Remove unneeded tags
-        bad_tags = element.cssselect('.rtMatcher') + element.cssselect('.lyricsbreak')
+        bad_tags = element.cssselect('.rtMatcher') + \
+            element.cssselect('.lyricsbreak')
         for tag in bad_tags:
             tag.drop_tree()
 
         # Remove HTML comments
         real_string = etree.tostring(element, encoding=unicode)
         cleaned_html = clean_html(real_string)
-        print u'{0}'.format(html.fragment_fromstring(cleaned_html).text_content())
+        print u'{0}'.format(
+            html.fragment_fromstring(cleaned_html).text_content()
+        )
         return 0
 
 
