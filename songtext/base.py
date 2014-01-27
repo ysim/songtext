@@ -20,8 +20,11 @@ class BaseTrack(object):
         return self.page_html.cssselect(self.CSS_SELECTOR)[0]
 
     def get_lyrics(self):
-        raise NotImplementedError('This method should print a unicode string '
-            'of the requested song lyrics and return 0 if successful, else 1.')
+        raise NotImplementedError("""
+            This method should perform any needed cleaning, print a unicode
+            string of the requested song lyrics and return 0 if successful,
+            else 1.
+        """)
 
 
 class BaseTrackList(object):
@@ -32,21 +35,27 @@ class BaseTrackList(object):
         self.json = self.response.json()
 
     def get_response(self, args):
-        raise NotImplementedError('Build the GET request here with the '
-            'desired parameters (e.g. the API key) and return the response '
-            'object.')
+        raise NotImplementedError("""
+            Build the GET request here with the desired parameters (e.g. the
+            API key) and return the response object.
+        """)
 
     def is_valid(self):
-        raise NotImplementedError('Check the result set of the response and '
-            'return True if one or more tracks matched the search query.')
+        raise NotImplementedError("""Check the result set of the response and
+            return True if one or more tracks matched the search query.
+        """)
 
     def get_track_url(self, index=0):
         raise NotImplementedError('Return the URL of the requested track.')
 
     def get_info(self, index=0):
-        raise NotImplementedError('Print the meta information of the track, '
-            'such as the artist name and song title.')
+        raise NotImplementedError("""
+            Print the meta information of the track, such as the artist name
+            and song title.
+        """)
 
     def get_list(self, limit=10):
-        raise NotImplementedError('Return a formatted list of the tracks that '
-            'matched the search query.')
+        raise NotImplementedError("""
+            Return a formatted list of the tracks that matched the search
+            query.
+        """)
