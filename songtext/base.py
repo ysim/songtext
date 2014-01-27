@@ -9,8 +9,13 @@ class BaseTrack(object):
         self.response = requests.get(url)
 
     @property
-    def html_element(self):
+    def page_html(self):
         return html.document_fromstring(self.response.text)
+
+    @property
+    def element(self):
+        """Return the HTML element that contains the lyrics."""
+        return self.page_html.cssselect(self.CSS_SELECTOR)[0]
 
     def get_lyrics(self):
         raise NotImplementedError('This method should return a printable '
