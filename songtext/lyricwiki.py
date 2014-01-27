@@ -48,13 +48,9 @@ class Track(BaseTrack):
 
 class TrackList(BaseTrackList):
     
-    def __init__(self, args):
-        self.args = args
-        self.response = self.get_response(args)
-        self.json = self.response.json()
-
     def get_response(self, args):
         params = { 'fmt': 'realjson' }
+
         for arg in SEARCH_PARAMETERS.keys():
             if args[arg] is not None:
                 params[SEARCH_PARAMETERS[arg]] = args[arg]
