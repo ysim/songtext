@@ -10,7 +10,7 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 **Note:** Not all the APIs support all of these options.
 
-* Search all fields (artist name, song name, lyrics):
+* Search **all fields** (artist name, song name, lyrics):
 
         $ ./songtext.py johnny flynn tickle me pink
 
@@ -99,8 +99,8 @@ option (`-l, --list`), which will return the top ten matches by default:
         9. Lea Michele: Firework
            ("Do you ever feel like a plastic bag"...)
 
-    Looks like hit #6 is correct, so let's specify that with the index
-    (`-i, --index`) option:
+    Looks like hit #6 is correct, so let's specify that with the **index
+    option** (`-i, --index`):
 
         $ ./songtext.py -t firework -i 6
 
@@ -118,8 +118,8 @@ option (`-l, --list`), which will return the top ten matches by default:
 
     That looks more correct.
 
-* You can also pass one integer argument to the list option to limit the number
-  of matches returned in the list:
+* You can also pass one integer argument to the **list** option to limit the
+  number of matches returned in the list:
 
         $ ./songtext.py laura marling rambling man -l 5
 
@@ -139,11 +139,12 @@ option (`-l, --list`), which will return the top ten matches by default:
         4. Laura Marling: Alpha Shallows
            ("He could fall and she could weep"...)
 
-    Note that because it is optional, if you're using this option without an
-    argument before any position arguments (QUERY), you will have to separate
-    them with two dashes (`--`) so the shell will not consume the first word of
-    the positional argument[s] as the argument for the list option. For
-    example:
+    Note that because it is optional and *may* taken one argument, if you're
+    using this option without an argument before any position arguments
+    (QUERY), you will have to separate them with two dashes (`--`) to indicate
+    the end of the optional arguments so the shell will not consume the first
+    word of the positional argument[s] as the argument for the list option.
+    For example:
 
         $ ./songtext.py -l josh ritter snow is gone
         usage: songtext.py [-h] [-l [NUM_MATCHES]] [-i INDEX]
@@ -180,6 +181,20 @@ option (`-l, --list`), which will return the top ten matches by default:
         9. Josh Ritter: Last Ditch Effort (See You Try)
           ("You have chosen dawn to leave"...)
 
+* Select a different API with the `--api` option, e.g.
+
+        $ ./songtext.py --api lyricwiki -a andrew bird -t armchairs
+
+        Andrew Bird: Armchairs
+        ------------------------
+
+        I dreamed you were a cosmonaut
+        of the space between our chairs
+        and I was a cartographer
+        of the tangles in your hair
+
+        ...
+
 
 ## Supported arguments options by API
 
@@ -191,7 +206,6 @@ option (`-l, --list`), which will return the top ten matches by default:
 | `-w`, `--words`  | Yes                  | No                |
 | `-l`, `--list`   | Yes                  | No                |
 | `-i`, `--index`  | Yes                  | No                |
-
 
 
 ## Supported APIs
