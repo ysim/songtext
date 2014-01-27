@@ -181,6 +181,19 @@ option (`-l, --list`), which will return the top ten matches by default:
           ("You have chosen dawn to leave"...)
 
 
+## Supported arguments options by API
+
+| argument          | LYRICSnMUSIC          | LyricWiki         |
+|                   | `--api lyricsnmusic`  | `--api lyricwiki` |
+|-------------------|-----------------------|-------------------|
+| positional        | Yes                   | No                |
+| `-a`, `--artist`  | Yes                   | Yes (Mandatory)   |
+| `-t`, `--title`   | Yes                   | Yes (Mandatory)   |
+| `-w`, `--words`   | Yes                   | No                |
+| `-l`, `--list`    | Yes                   | No                |
+| `-i`, `--index`   | Yes                   | No                |
+
+
 
 ## Supported APIs
 
