@@ -99,23 +99,17 @@ class TrackList(BaseTrackList):
         return output
 
 
-def get_track_list(args):
-    track_list = TrackList(args)
-    if not track_list.is_valid():
+def get_result(args):
+    tracklist = TrackList(args)
+    if not tracklist.is_valid():
         return 1
-    print "Displaying the top {0} matches:\n".format(args['limit'])
-    print track_list.get_list(args['limit'])
-    return 0
-
-
-def get_track(args):
-    track_list = TrackList(args)
-    if not track_list.is_valid():
+    if args['limit'] is not None:
+        print 'Displaying the top {0} matches:\n'.format(args['limit'])
+        print tracklist.get_list(args['limit'])
+        return 0
+    if not tracklist.is_track_viewable(args['index']):
+        print 'The requested track is not viewable.\n'
         return 1
-    if not track_list.is_track_viewable(args['index']):
-        print "The requested track is not viewable."
-        print
-        return 1
-    track = Track(track_list.get_track_url(args['index']))
-    print track_list.get_info(int(args['index']))
+    track = Track(tracklist.get_track_url(args['index']))
+    print tracklist.get_info(int(args['index']))
     return track.get_lyrics()
