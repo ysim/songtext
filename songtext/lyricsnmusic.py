@@ -79,7 +79,11 @@ class TrackList(BaseTrackList):
         return output
 
     def is_track_viewable(self, index):
-        return self.json[index]['viewable']
+        is_viewable = self.json[index]['viewable']
+        if not is_viewable:
+            print 'The requested track is not viewable.\n'
+            return False
+        return True
 
     def get_list(self, limit):
         output = 'Displaying the top {0} matches:\n\n'.format(limit)
@@ -106,7 +110,6 @@ def get_result(args):
         print tracklist.get_list(args['limit'])
         return 0
     if not tracklist.is_track_viewable(args['index']):
-        print 'The requested track is not viewable.\n'
         return 1
     track = Track(tracklist.get_track_url(args['index']))
     print tracklist.get_info(int(args['index']))
