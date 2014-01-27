@@ -6,8 +6,6 @@
 #   artist ('getSong') or only by artist ('getArtist'), which returns the
 #   entire discography without any links.
 
-import os
-
 from lxml import html, etree
 from lxml.html.clean import clean_html
 import requests
@@ -47,7 +45,7 @@ class Track(BaseTrack):
 
 
 class TrackList(BaseTrackList):
-    
+
     def get_response(self, args):
         params = { 'fmt': 'realjson' }
 
