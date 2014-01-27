@@ -1,6 +1,6 @@
 # songtext
 
-Get song lyrics in the command line.
+A command-line song lyric fetcher.
 
 Inspired by [@gleitz](https://twitter.com/gleitz)'s
 [howdoi](https://github.com/gleitz/howdoi).
@@ -186,6 +186,7 @@ option (`-l, --list`), which will return the top ten matches by default:
 
 * [LYRICSnMUSIC](http://www.lyricsnmusic.com/api)
 * [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST)
+* Coming soon: [ChartLyrics](http://www.chartlyrics.com/api.aspx)
 
 
 ## Author
