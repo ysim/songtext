@@ -27,7 +27,7 @@ class Track(BaseTrack):
     CSS_SELECTOR = '.lyricbox'
 
     def get_lyrics(self):
-        element = self.html_element.cssselect(self.CSS_SELECTOR)[0]
+        element = self.element
 
         # Replace <br/> tags with \n
         for br in element.cssselect('br'):
