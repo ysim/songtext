@@ -9,20 +9,26 @@
 ####################################
 
 import argparse
+import os
 import sys
 
 import lyricsnmusic
 
 
+DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
+
+
 def get_song_lyrics(args):
-    for arg in lyricsnmusic.SEARCH_PARAMETERS.keys():
+    api = __import__(args.pop('api'))
+
+    for arg in getattr(api, 'SEARCH_PARAMETERS').keys():
         if args[arg] is not None:
             args[arg] = ' '.join(args[arg])
 
     if args['limit'] is not None:
-        return lyricsnmusic.get_track_list(args)
+        return getattr(api, 'get_track_list')(args)
 
-    return lyricsnmusic.get_track(args)
+    return getattr(api, 'get_track')(args)
 
 
 def get_parser():
@@ -40,6 +46,8 @@ def get_parser():
         nargs='+')
     parser.add_argument('-w', '--words', metavar='LYRICS', type=str,
         nargs='+')
+    parser.add_argument('--api', metavar='API_MODULE', type=str, nargs=1,
+        default=DEFAULT_API)
     return parser
 
 
