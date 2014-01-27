@@ -12,9 +12,6 @@ import argparse
 import os
 import sys
 
-import lyricsnmusic
-import lyricwiki
-
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
 
