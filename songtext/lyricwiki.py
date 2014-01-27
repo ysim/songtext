@@ -86,8 +86,8 @@ class TrackList(BaseTrackList):
 
 def get_result(args):
     if args['limit'] is not None:
-        raise Exception('The list option (-l, --list) is not supported by this '
-            'API as it only returns a single result.')
+        raise Exception('The list option (-l, --list) is not supported by '
+            'this API as it only returns a single result.')
     track_list = TrackList(args)
     if not track_list.is_valid():
         return 1
