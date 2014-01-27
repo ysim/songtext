@@ -82,7 +82,7 @@ class TrackList(BaseTrackList):
         return self.json[index]['viewable']
 
     def get_list(self, limit):
-        output = ""
+        output = 'Displaying the top {0} matches:\n\n'.format(limit)
         for index, track in enumerate(self.json[:limit]):
             viewable = track['viewable']
             line = u'{0:>3}. {1}: {2}'.format(
@@ -103,7 +103,6 @@ def get_result(args):
     if not tracklist.is_valid():
         return 1
     if args['limit'] is not None:
-        print 'Displaying the top {0} matches:\n'.format(args['limit'])
         print tracklist.get_list(args['limit'])
         return 0
     if not tracklist.is_track_viewable(args['index']):
