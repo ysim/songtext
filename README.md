@@ -8,6 +8,8 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 ## Usage
 
+**Note:** Not all the APIs support all of these options.
+
 * Search all fields (artist name, song name, lyrics):
 
         $ ./songtext.py johnny flynn tickle me pink
@@ -49,7 +51,7 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 * To refine your search (e.g. if the lyrics returned were for the wrong song,
 or the requested lyrics weren't viewable for some other reason), use the list
-option (`-l, --list`) to return the top ten matches:
+option (`-l, --list`), which will return the top ten matches by default:
 
         $ ./songtext.py -t firework
 
@@ -115,6 +117,69 @@ option (`-l, --list`) to return the top ten matches:
         ...
 
     That looks more correct.
+
+* You can also pass one integer argument to the list option to limit the number
+  of matches returned in the list:
+
+        $ ./songtext.py laura marling rambling man -l 5
+
+        24 track(s) matched your search query.
+
+
+        Displaying the top 5 matches:
+
+        0. Laura Marling: Rambling Man
+           ("Oh naive little me"...)
+        1. Laura Marling: Blackberry Stone
+           ("Well I, own this field"...)
+        2. Laura Marling: Darkness Descends
+           ("You're holding bits of styrofoam"...)
+        3. Laura Marling: Hope in the Air
+           ("There is a man that I know"...)
+        4. Laura Marling: Alpha Shallows
+           ("He could fall and she could weep"...)
+
+    Note that because it is optional, if you're using this option without an
+    argument before any position arguments (QUERY), you will have to separate
+    them with two dashes (`--`) so the shell will not consume the first word of
+    the positional argument[s] as the argument for the list option. For
+    example:
+
+        $ ./songtext.py -l josh ritter snow is gone
+        usage: songtext.py [-h] [-l [NUM_MATCHES]] [-i INDEX]
+        [-a ARTIST_NAME [ARTIST_NAME ...]]
+        [-t SONG_TITLE [SONG_TITLE ...]] [-w LYRICS [LYRICS ...]]
+        [--api API_MODULE]
+        [QUERY [QUERY ...]]
+        songtext.py: error: argument -l/--list: invalid int value: 'josh'
+        $ ./songtext.py -l -- josh ritter snow is gone
+
+        34 track(s) matched your search query.
+
+
+        Displaying the top 10 matches:
+
+        0. Josh Ritter: Snow Is Gone
+           ("Birds beneath my window dusting their wings upon the lawn"...)
+        1. Josh Ritter: Snow Is Gone [Live][*]
+           ("Birds beneath my window dusting their wings upon the lawn"...)
+        2. Josh Ritter: Morning Is a Long Way Down
+           ("Wrap your arms around me"...)
+        3. Josh Ritter: Horrible Qualities/Stuck to You
+           ("There's one thing, mama,"...)
+        4. Josh Ritter: Last Ditch Effort
+           (""...)
+        5. Josh Ritter: Paths Will Cross
+           ("This is it my dear old friend"...)
+        6. Josh Ritter: Hotel Song
+           ("Sunday night, its supper time, the hotel?s full and all is fine."...)
+        7. Josh Ritter: Potters Wheel
+           ("I close my eyes and it all returns like the spinning of a potter's wheel"...)
+        8. Josh Ritter: Love Is Making Its Way Back Home
+           ("Dot paths the moonly road"...)
+        9. Josh Ritter: Last Ditch Effort (See You Try)
+          ("You have chosen dawn to leave"...)
+
 
 
 ## Supported APIs
