@@ -1,7 +1,6 @@
 # LYRICSnMUSIC API wrapper
 # Documentation: http://www.lyricsnmusic.com/api
 
-
 import os
 
 import requests
@@ -35,7 +34,7 @@ class Track(BaseTrack):
     def get_lyrics(self):
         try:
             print u'{0}\n\n'.format(
-                self.html_string.cssselect(self.CSS_SELECTOR)[0].text_content()
+                self.html_element.cssselect(self.CSS_SELECTOR)[0].text_content()
             )
             return 0
         except IndexError:
