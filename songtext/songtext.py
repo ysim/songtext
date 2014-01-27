@@ -13,13 +13,14 @@ import os
 import sys
 
 import lyricsnmusic
+import lyricwiki
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
 
 
 def get_song_lyrics(args):
-    api = __import__(args.pop('api'))
+    api = __import__(''.join(args.pop('api')))
 
     for arg in getattr(api, 'SEARCH_PARAMETERS').keys():
         if args[arg] is not None:
