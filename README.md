@@ -140,7 +140,7 @@ option (`-l, --list`), which will return the top ten matches by default:
         4. Laura Marling: Alpha Shallows
            ("He could fall and she could weep"...)
 
-    Note that because it is optional and *may* taken one argument, if you're
+    Note that because it is optional and *may* take one argument, if you're
     using this option without an argument before any position arguments
     (QUERY), you will have to separate them with two dashes (`--`) to indicate
     the end of the optional arguments so the shell will not consume the first
