@@ -71,6 +71,19 @@ class LyricWikiTests(unittest.TestCase):
         return_value = songtext.get_song_lyrics(arg_dict)
         self.assertEqual(return_value, 1)
 
+    def test_searching_with_words_option_fails(self):
+        arg_dict = self.get_args('-w home is wherever i\'m with you')
+        return_value = songtext.get_song_lyrics(arg_dict)
+        self.assertEqual(return_value, 1)
+
+    def test_searching_with_artist_only_fails(self):
+        # TODO: should return 1 instead of raising Exception
+        pass
+
+    def test_searching_with_song_title_only_fails(self):
+        # TODO: should return 1 instead of raising Exception
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
