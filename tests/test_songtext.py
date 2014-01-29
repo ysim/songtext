@@ -53,5 +53,24 @@ class LyricsNMusicTests(unittest.TestCase):
         self.assertEqual(return_value, 0)
 
 
+class LyricWikiTests(unittest.TestCase):
+
+    def get_args(self, arg_string):
+        arg_string += ' --api lyricwiki'
+        parser = songtext.get_parser()
+        args = vars(parser.parse_args(arg_string.split(' ')))
+        return args
+
+    def test_get_single_result_with_artist_and_song_title(self):
+        arg_dict = self.get_args('-a mumford and sons -t the cave')
+        return_value = songtext.get_song_lyrics(arg_dict)
+        self.assertEqual(return_value, 0)
+
+    def test_searching_with_list_option_fails(self):
+        arg_dict = self.get_args('-a josh rouse -l')
+        return_value = songtext.get_song_lyrics(arg_dict)
+        self.assertEqual(return_value, 1)
+
+
 if __name__ == '__main__':
     unittest.main()
