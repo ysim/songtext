@@ -199,14 +199,14 @@ option (`-l, --list`), which will return the top ten matches by default:
 
 ## Supported arguments options by API
 
-| argument         | `--api lyricsnmusic` | `--api lyricwiki` |
-| ---------------- | --------------------:| -----------------:|
-| positional       | Yes                  | No                |
-| `-a`, `--artist` | Yes                  | Yes (Mandatory)   |
-| `-t`, `--title`  | Yes                  | Yes (Mandatory)   |
-| `-w`, `--words`  | Yes                  | No                |
-| `-l`, `--list`   | Yes                  | No                |
-| `-i`, `--index`  | Yes                  | No                |
+| argument         | `lyricsnmusic` | `lyricwiki` | `chartlyrics` |
+| ---------------- | --------------:| -----------:| -------------:|
+| positional       | Yes            | No          | No            |
+| `-a`, `--artist` | Yes            | Yes         | Yes           |
+| `-t`, `--title`  | Yes            | Yes         | Yes           |
+| `-w`, `--words`  | Yes            | No          | Yes           |
+| `-l`, `--list`   | Yes            | No          | Yes           |
+| `-i`, `--index`  | Yes            | No          | Yes           |
 
 
 ## Supported APIs
