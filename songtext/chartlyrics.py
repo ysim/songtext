@@ -11,8 +11,8 @@ API_URL = 'http://api.chartlyrics.com/apiv1.asmx/'
 API_METHODS = {
     'SearchLyric': {
         'params': ['artist', 'song'],
-        'description': 'Returns an ArrayOfSearchLyricResult of matching tracks '
-            'given both an artist and song title',
+        'description': 'Returns an ArrayOfSearchLyricResult of matching '
+            'tracks given both an artist and song title',
     },
     'SearchLyricDirect': {
         'params': ['artist', 'song'],
@@ -161,7 +161,6 @@ class TrackList(object):
 
 
 def get_result(args):
-    print args
     if args['limit'] is None and args['index'] == 0:
         track = Track(args)
         if not track.is_valid():
