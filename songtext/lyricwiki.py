@@ -90,6 +90,10 @@ def get_result(args):
         print ('\nThe list option (-l, --list) is not supported by this API '
             'as it can only return a single match for each search.\n\n')
         return 1
+    if args['words'] is not None:
+        print ('\nThe words option (-w, --words) is not supported by this API '
+            '\n\n.')
+        return 1
     track_list = TrackList(args)
     if not track_list.is_valid():
         return 1
