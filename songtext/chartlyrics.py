@@ -5,8 +5,6 @@ from xml.dom.minidom import parseString
 
 import requests
 
-from base import BaseTrack, BaseTrackList
-
 
 API_URL = 'http://api.chartlyrics.com/apiv1.asmx/'
 
