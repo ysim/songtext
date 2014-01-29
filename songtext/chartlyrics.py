@@ -125,9 +125,9 @@ class TrackList(object):
     def get_cleaned_results(self):
         """ Remove all the empty <SearchLyricResult> tags. """
         raw_results = self.xml_doc.getElementsByTagName('SearchLyricResult')
-        return [result_element for result_element in raw_results \
+        return [result_element for result_element in raw_results
             if not result_element.hasAttribute('xsi:nil')]
-        
+
     def is_valid(self):
         if self.count == 0:
             print "\nNo tracks matching your query were found.\n\n"
