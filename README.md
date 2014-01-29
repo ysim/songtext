@@ -197,7 +197,7 @@ option (`-l, --list`), which will return the top ten matches by default:
         ...
 
 
-## Supported arguments options by API
+## Supported arguments by API
 
 | argument         | `lyricsnmusic` | `lyricwiki` | `chartlyrics` |
 | ---------------- | --------------:| -----------:| -------------:|
