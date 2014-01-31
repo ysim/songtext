@@ -161,11 +161,15 @@ class TrackList(object):
 
 
 def get_result(args):
-    if args['limit'] is None and args['index'] == 0:
+    # Only use the SearchLyricDirect method if no -l, -i, or -w specified
+    if args['limit'] is None and args['index'] == 0 and args['words'] is None:
         track = Track(args)
         if not track.is_valid():
             return 1
         return track.get_lyrics()
+
+    # Else use SearchLyric or SearchLyricText to get an array of results,
+    # returning either a single track (with -i) or a list (with -l).
     tracklist = TrackList(args)
     if not tracklist.is_valid():
         return 1
