@@ -77,12 +77,14 @@ class LyricWikiTests(unittest.TestCase):
         self.assertEqual(return_value, 1)
 
     def test_searching_with_artist_only_fails(self):
-        # TODO: should return 1 instead of raising Exception
-        pass
+        arg_dict = self.get_args('-a arcade fire')
+        return_value = songtext.get_song_lyrics(arg_dict)
+        self.assertEqual(return_value, 1)
 
     def test_searching_with_song_title_only_fails(self):
-        # TODO: should return 1 instead of raising Exception
-        pass
+        arg_dict = self.get_args('-t stairway to heaven')
+        return_value = songtext.get_song_lyrics(arg_dict)
+        self.assertEqual(return_value, 1)
 
 
 if __name__ == '__main__':

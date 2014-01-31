@@ -11,6 +11,7 @@ from lxml.html.clean import clean_html
 import requests
 
 from base import BaseTrack, BaseTrackList
+from errors import ArgumentError
 
 
 API_URL = 'http://lyrics.wikia.com/api.php'
@@ -59,8 +60,9 @@ class TrackList(BaseTrackList):
         if 'artist' in params and 'song' in params:
             params['func'] = 'getSong'
         else:
-            raise Exception('This API requires that you search with both the '
-                'artist name (-a, --artist) and the song title (-t, --title).')
+            print ('\nThis API requires that you search with both the artist '
+                'name (-a, --artist) and the song title (-t, --title).\n\n')
+            raise ArgumentError
         response = requests.get(API_URL, params=params)
         return response
 
@@ -94,7 +96,10 @@ def get_result(args):
         print ('\nThe words option (-w, --words) is not supported by this API '
             '\n\n.')
         return 1
-    track_list = TrackList(args)
+    try:
+        track_list = TrackList(args)
+    except ArgumentError:
+        return 1
     if not track_list.is_valid():
         return 1
     track = Track(track_list.get_track_url())
