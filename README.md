@@ -6,10 +6,20 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 [howdoi](https://github.com/gleitz/howdoi). Name from the [German word for
 "lyrics"](http://www.dict.cc/deutsch-englisch/Songtext.html).
 
+**Supported APIs:**
+
+* [LYRICSnMUSIC](http://www.lyricsnmusic.com/api)
+* [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST)
+
 
 ## Usage
 
-**Note:** Not all the APIs support all of these options.
+**Note 1:** Not all the APIs support all of these options. See the section
+"Supported arguments by API" for more information.
+
+**Note 2:** Where the lyrics have been returned below, the text body has been
+truncated after the first paragraph.
+
 
 * Search **all fields** (artist name, song name, lyrics):
 
@@ -27,8 +37,6 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
         I've rolled around the orchard
         And found myself too awkward
         And tickle me green I'm too naive
-
-        ...
 
 * Optionally, search by **artist name** (`-a, --artist`), **song title**
 (`-t, --title`), and/or the **words in the lyrics** (`-w, --words`): 
@@ -48,8 +56,6 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
         Ich weiß, ich weiß, ich weiß und frage nicht
         Halt dich bei mir fest, steig auf, ich trage dich
 
-        ...
-
 * To refine your search (e.g. if the lyrics returned were for the wrong song,
 or the requested lyrics weren't viewable for some other reason), use the list
 option (`-l, --list`), which will return the top ten matches by default:
@@ -66,8 +72,6 @@ option (`-l, --list`), which will return the top ten matches by default:
         Not for fame or fortune do they strive
         But the fruits of their labor are worth more than their pay
         And it's time a few of them were recognized
-
-        ...
 
     WRONG! I wanted the Katy Perry version. Let's see the list of matches that
     is returned from searching for the song title "firework":
@@ -114,8 +118,6 @@ option (`-l, --list`), which will return the top ten matches by default:
         Do you ever feel like a plastic bag
         Drifting thought the wind
         Wanting to start again
-
-        ...
 
     That looks more correct.
 
@@ -194,26 +196,60 @@ option (`-l, --list`), which will return the top ten matches by default:
         and I was a cartographer
         of the tangles in your hair
 
-        ...
-
 
 ## Supported arguments by API
 
-| argument         | `lyricsnmusic` | `lyricwiki` | `chartlyrics` |
-| ---------------- | --------------:| -----------:| -------------:|
-| positional       | Yes            | No          | No            |
-| `-a`, `--artist` | Yes            | Yes         | Yes           |
-| `-t`, `--title`  | Yes            | Yes         | Yes           |
-| `-w`, `--words`  | Yes            | No          | Yes           |
-| `-l`, `--list`   | Yes            | No          | Yes           |
-| `-i`, `--index`  | Yes            | No          | Yes           |
+| argument         | `lyricsnmusic` | `lyricwiki` |
+| ---------------- | --------------:| -----------:|
+| positional       | Yes            | No          |
+| `-a`, `--artist` | Yes            | Yes         |
+| `-t`, `--title`  | Yes            | Yes         |
+| `-w`, `--words`  | Yes            | No          |
+| `-l`, `--list`   | Yes            | No          |
+| `-i`, `--index`  | Yes            | No          |
 
 
-## Supported APIs
+## Notes on the APIs
 
-* [LYRICSnMUSIC](http://www.lyricsnmusic.com/api)
-* [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST)
-* Coming soon: [ChartLyrics](http://www.chartlyrics.com/api.aspx)
+**LYRICSnMUSIC** is ideal if you don't know the full track name or you don't
+know either the artist or the track title, since it supports generic searches
+(i.e. on all fields). However, it sometimes returns the unobvious match for
+a search query, e.g.
+
+    $ ./songtext.py --api lyricsnmusic stairway to heaven
+
+    48 track(s) matched your search query.
+
+
+    Neil Sedaka: Stairway to Heaven
+    --------------------------------
+
+    Climb up, way up high
+    Climb up, way up high
+    Climb up, way up high
+
+**LyricWiki** seems to do better when you know exactly what you're looking for
+and are able to spell out the artist name and track title in full and
+accurately.
+
+For example:
+
+    $ ./songtext.py --api lyricwiki -a interpol -t stella was a diver
+
+    Your query did not match any tracks.
+
+
+    $ ./songtext.py --api lyricwiki -a interpol -t stella was a diver and she was always down
+
+    Interpol: Stella Was A Diver And She Was Always Down
+    ------------------------------------------------------
+
+    (This one's called Stella Was A Diver And She Was Always Down)
+
+    When she walks down the street
+    She knows there's people watching
+    The building fronts are just fronts
+    To hide the people watching her
 
 
 ## Author
