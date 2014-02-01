@@ -38,8 +38,8 @@ truncated after the first paragraph.
         And found myself too awkward
         And tickle me green I'm too naive
 
-* Optionally, search by **artist name** (`-a, --artist`), **song title**
-(`-t, --title`), and/or the **words in the lyrics** (`-w, --words`): 
+* Search by **artist name** (`-a, --artist`) and **song title**
+(`-t, --title`) -- optional for LYRICSnMUSIC, both mandatory for LyricWiki.
 
         $ ./songtext.py -a wir sind helden -t ein elefant für dich
 
@@ -56,9 +56,33 @@ truncated after the first paragraph.
         Ich weiß, ich weiß, ich weiß und frage nicht
         Halt dich bei mir fest, steig auf, ich trage dich
 
-* To refine your search (e.g. if the lyrics returned were for the wrong song,
-or the requested lyrics weren't viewable for some other reason), use the list
-option (`-l, --list`), which will return the top ten matches by default:
+* Search by **lyric text**  (`-w, --words`): 
+
+        $ ./songtext.py -w sleeping is giving in
+
+        23 track(s) matched your search query.
+
+
+        Arcade Fire: Rebellion (Lies)
+        ------------------------------
+
+        Sleeping is giving in, 
+        No matter what the time is. 
+        Sleeping is giving
+        In, so lift those heavy eyelids.
+        People say that you'll die faster than without water. 
+        But we know it's just a lie, 
+        Scare your son and scare your daughter.
+        People say that your dreams are the only things that save ya.
+        Come on baby in our dreams, 
+        We can live our misbehavior.
+        Every time you close your eyes lies, lies!
+        People try and hide the night underneath the covers.
+        People try and hide the light underneath the covers.
+
+* Use the **list option** (`-l, --list`) to refine your search (e.g. if the
+lyrics returned were for the wrong song, or the requested lyrics weren't
+viewable for some other reason). It will return the top ten matches by default.
 
         $ ./songtext.py -t firework
 
@@ -121,8 +145,8 @@ option (`-l, --list`), which will return the top ten matches by default:
 
     That looks more correct.
 
-* You can also pass one integer argument to the **list** option to limit the
-  number of matches returned in the list:
+* Optionally, pass one integer argument to the **list** option to limit the
+number of matches returned in the list:
 
         $ ./songtext.py laura marling rambling man -l 5
 
