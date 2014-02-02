@@ -278,4 +278,4 @@ For example:
 
 ## Author
 
-Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
+* Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
