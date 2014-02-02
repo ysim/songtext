@@ -4,14 +4,7 @@ import os
 import sys
 import unittest
 
-
-# Temporarily add $package/songtext to your $PATH
-FILE_BASE_PATH = os.path.abspath(os.path.dirname(__file__))
-ROOT_PATH = os.path.dirname(FILE_BASE_PATH)
-PACKAGE_PATH = os.path.join(ROOT_PATH, 'songtext')
-sys.path.insert(0, PACKAGE_PATH)
-
-import songtext
+from .context import songtext
 
 
 class LyricsNMusicTests(unittest.TestCase):
