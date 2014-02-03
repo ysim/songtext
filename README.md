@@ -14,8 +14,8 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 ## Usage
 
-**Note 1:** Not all the APIs support all of these options. See the section
-"Supported arguments by API" for more information.
+**Note 1:** Not all the APIs support all of these options. See the ["Supported
+arguments by API" section](#supported-arguments-by-api) for more information.
 
 **Note 2:** Where the lyrics have been returned below, the text body has been
 truncated after the first paragraph.
