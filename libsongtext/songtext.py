@@ -9,6 +9,7 @@
 ####################################
 
 import argparse
+from importlib import import_module  # __import__ does not resolve dotted paths
 import os
 import sys
 
@@ -17,7 +18,7 @@ DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
 
 
 def get_song_lyrics(args):
-    api = __import__(''.join(args.pop('api')))
+    api = import_module(__package__ + '.' + ''.join(args.pop('api')))
 
     for arg in getattr(api, 'SEARCH_PARAMETERS').keys():
         if args[arg] is not None:
@@ -53,7 +54,3 @@ def main():
     parser = get_parser()
     args = vars(parser.parse_args())
     return get_song_lyrics(args)
-
-
-if __name__ == '__main__':
-    sys.exit(main())

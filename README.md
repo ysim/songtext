@@ -14,8 +14,8 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 ## Usage
 
-**Note 1:** Not all the APIs support all of these options. See the section
-"Supported arguments by API" for more information.
+**Note 1:** Not all the APIs support all of these options. See the ["Supported
+arguments by API" section](#supported-arguments-by-api) for more information.
 
 **Note 2:** Where the lyrics have been returned below, the text body has been
 truncated after the first paragraph.
@@ -23,7 +23,7 @@ truncated after the first paragraph.
 
 * Search **all fields** (artist name, song name, lyrics):
 
-        $ ./songtext.py johnny flynn tickle me pink
+        $ songtext johnny flynn tickle me pink
 
         9 track(s) matched your search query.
 
@@ -41,7 +41,7 @@ truncated after the first paragraph.
 * Search by **artist name** (`-a, --artist`) and **song title**
 (`-t, --title`) -- optional for LYRICSnMUSIC, both mandatory for LyricWiki.
 
-        $ ./songtext.py -a wir sind helden -t ein elefant für dich
+        $ songtext -a wir sind helden -t ein elefant für dich
 
         9 track(s) matched your search query.
 
@@ -58,7 +58,7 @@ truncated after the first paragraph.
 
 * Search by **lyric text**  (`-w, --words`): 
 
-        $ ./songtext.py -w sleeping is giving in
+        $ songtext -w sleeping is giving in
 
         23 track(s) matched your search query.
 
@@ -84,7 +84,7 @@ truncated after the first paragraph.
 lyrics returned were for the wrong song, or the requested lyrics weren't
 viewable for some other reason). It will return the top ten matches by default.
 
-        $ ./songtext.py -t firework
+        $ songtext -t firework
 
         48 track(s) matched your search query.
 
@@ -100,7 +100,7 @@ viewable for some other reason). It will return the top ten matches by default.
     WRONG! I wanted the Katy Perry version. Let's see the list of matches that
     is returned from searching for the song title "firework":
 
-        $ ./songtext.py -t firework -l
+        $ songtext -t firework -l
 
         48 track(s) matched your search query.
 
@@ -131,7 +131,7 @@ viewable for some other reason). It will return the top ten matches by default.
     Looks like hit #6 is correct, so let's specify that with the **index
     option** (`-i, --index`):
 
-        $ ./songtext.py -t firework -i 6
+        $ songtext -t firework -i 6
 
         48 track(s) matched your search query.
 
@@ -148,7 +148,7 @@ viewable for some other reason). It will return the top ten matches by default.
 * Optionally, pass one integer argument to the **list** option to limit the
 number of matches returned in the list:
 
-        $ ./songtext.py laura marling rambling man -l 5
+        $ songtext laura marling rambling man -l 5
 
         24 track(s) matched your search query.
 
@@ -173,14 +173,14 @@ number of matches returned in the list:
     word of the positional argument[s] as the argument for the list option.
     For example:
 
-        $ ./songtext.py -l josh ritter snow is gone
+        $ songtext -l josh ritter snow is gone
         usage: songtext.py [-h] [-l [NUM_MATCHES]] [-i INDEX]
         [-a ARTIST_NAME [ARTIST_NAME ...]]
         [-t SONG_TITLE [SONG_TITLE ...]] [-w LYRICS [LYRICS ...]]
         [--api API_MODULE]
         [QUERY [QUERY ...]]
         songtext.py: error: argument -l/--list: invalid int value: 'josh'
-        $ ./songtext.py -l -- josh ritter snow is gone
+        $ songtext -l -- josh ritter snow is gone
 
         34 track(s) matched your search query.
 
@@ -210,7 +210,7 @@ number of matches returned in the list:
 
 * Select a different API with the `--api` option, e.g.
 
-        $ ./songtext.py --api lyricwiki -a andrew bird -t armchairs
+        $ songtext --api lyricwiki -a andrew bird -t armchairs
 
         Andrew Bird: Armchairs
         ------------------------
@@ -240,7 +240,7 @@ know either the artist or the track title, since it supports generic searches
 (i.e. on all fields). However, it sometimes returns the unobvious match for
 a search query, e.g.
 
-    $ ./songtext.py --api lyricsnmusic stairway to heaven
+    $ songtext --api lyricsnmusic stairway to heaven
 
     48 track(s) matched your search query.
 
@@ -258,12 +258,12 @@ accurately.
 
 For example:
 
-    $ ./songtext.py --api lyricwiki -a interpol -t stella was a diver
+    $ songtext --api lyricwiki -a interpol -t stella was a diver
 
     Your query did not match any tracks.
 
 
-    $ ./songtext.py --api lyricwiki -a interpol -t stella was a diver and she was always down
+    $ songtext --api lyricwiki -a interpol -t stella was a diver and she was always down
 
     Interpol: Stella Was A Diver And She Was Always Down
     ------------------------------------------------------
@@ -278,4 +278,4 @@ For example:
 
 ## Author
 
-Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
+* Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
