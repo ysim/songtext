@@ -11,7 +11,6 @@
 import argparse
 from importlib import import_module  # __import__ does not resolve dotted paths
 import os
-import sys
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
