@@ -1,3 +1,10 @@
+v0.1.1 (2014-02-04)
+
+    * Fixed relative/anchor links in READMEs so that README.rst will render
+      properly on PyPI
+    * Adding the forgotten install_requires in setup.py
+
+
 v0.1.0 (2014-02-03)
 
     * Initial release to PyPI
