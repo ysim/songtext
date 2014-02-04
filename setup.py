@@ -29,6 +29,11 @@ setup(
             'songtext = libsongtext.songtext:main',
         ],
     },
+    install_requires=[
+        'cssselect>=0.9.1',
+        'lxml>=3.2.5',
+        'requests>=2.2.1',
+    ],
     license='BSD',
     keywords='console command line music song lyrics',
     classifiers=[
