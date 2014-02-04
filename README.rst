@@ -17,7 +17,8 @@ Usage
 -----
 
 **Note 1:** Not all the APIs support all of these options. See the
-`"Supported arguments by API" section <#supported-arguments-by-api>`__
+`"Supported arguments by API"
+section <https://github.com/ysim/songtext#supported-arguments-by-api>`__
 for more information.
 
 **Note 2:** Where the lyrics have been returned below, the text body has
