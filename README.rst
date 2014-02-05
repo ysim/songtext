@@ -3,7 +3,7 @@ songtext
 
 A command-line song lyric fetcher.
 
-Inspired by [@gleitz](https://twitter.com/gleitz)'s
+Inspired by `@gleitz <https://twitter.com/gleitz>`__'s
 `howdoi <https://github.com/gleitz/howdoi>`__. Name from the `German
 word for
 "lyrics" <http://www.dict.cc/deutsch-englisch/Songtext.html>`__.
@@ -312,5 +312,5 @@ For example:
 Author
 ------
 
--  Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
+-  Yi Qing Sim (`@yiqingsim <https://twitter.com/yiqingsim/>`__)
 
