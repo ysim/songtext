@@ -1,8 +1,16 @@
+v0.1.2 (2014-02-05)
+
+    * Added instructions on how to change the default API to the README (#15)
+    * Fixed links to Twitter in the README (#20)
+    * Print help text if no arguments are specified (#18)
+    * Added MANIFEST.in (#17)
+    * Added .travis.yml (#16)
+
 v0.1.1 (2014-02-04)
 
     * Fixed relative/anchor links in READMEs so that README.rst will render
-      properly on PyPI
-    * Adding the forgotten install_requires in setup.py
+      properly on PyPI (#13)
+    * Adding the forgotten install_requires in setup.py (#14)
 
 
 v0.1.0 (2014-02-03)
