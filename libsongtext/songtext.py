@@ -11,6 +11,7 @@
 import argparse
 from importlib import import_module  # __import__ does not resolve dotted paths
 import os
+import sys
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
@@ -27,7 +28,8 @@ def get_song_lyrics(args):
 
 
 def get_parser():
-    parser = argparse.ArgumentParser(description='grab some song lyrics')
+    parser = argparse.ArgumentParser(description='a command line song lyric '
+        'fetcher')
     parser.add_argument('query', metavar='QUERY', type=str, nargs='*',
         help='Search all fields (artist name, song title, words in lyrics), '
         'e.g. "daft punk get lucky"')
@@ -51,5 +53,8 @@ def get_parser():
 
 def main():
     parser = get_parser()
+    if not len(sys.argv) > 1:
+        parser.print_help()
+        return 1
     args = vars(parser.parse_args())
     return get_song_lyrics(args)

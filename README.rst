@@ -3,7 +3,7 @@ songtext
 
 A command-line song lyric fetcher.
 
-Inspired by [@gleitz](https://twitter.com/gleitz)'s
+Inspired by `@gleitz <https://twitter.com/gleitz>`__'s
 `howdoi <https://github.com/gleitz/howdoi>`__. Name from the `German
 word for
 "lyrics" <http://www.dict.cc/deutsch-englisch/Songtext.html>`__.
@@ -13,16 +13,82 @@ word for
 -  `LYRICSnMUSIC <http://www.lyricsnmusic.com/api>`__
 -  `LyricWiki <http://api.wikia.com/wiki/LyricWiki_API/REST>`__
 
+Installation
+------------
+
+With pip:
+
+::
+
+    $ pip install songtext
+
+With distutils:
+
+::
+
+    $ python setup.py install
+
+Configuration
+-------------
+
+-  The LYRICSnMUSIC API is turned on by default, however it requires an
+   API key; generate one easily here:
+   http://www.lyricsnmusic.com/api_keys/new and export the
+   ``LYRICSNMUSIC_API_KEY`` environment variable. You will probably want
+   to add this line to one of your shell startup files (e.g. ``.bashrc``
+   or ``.bash_profile``) like so:
+
+   ::
+
+       export LYRICSNMUSIC_API_KEY=<your lyricsnmusic api key here>
+
+-  To query the LyricWiki API just for the command you're running, use
+   the ``--api`` option, e.g.
+
+   ::
+
+       $ songtext --api lyricwiki -a andrew bird -t armchairs
+
+       Andrew Bird: Armchairs
+       ------------------------
+
+       I dreamed you were a cosmonaut
+       of the space between our chairs
+       and I was a cartographer
+       of the tangles in your hair
+
+-  To query a different API by default, set the ``SONGTEXT_DEFAULT_API``
+   environment variable and add this line somewhere sensible (as for the
+   ``LYRICSNMUSIC_API_KEY`` above), e.g.
+
+   ::
+
+       export SONGTEXT_DEFAULT_API=lyricwiki
+
 Usage
 -----
 
-**Note 1:** Not all the APIs support all of these options. See the
-`"Supported arguments by API"
-section <https://github.com/ysim/songtext#supported-arguments-by-api>`__
-for more information.
++-------------------------------+--------------------+-----------------+
+| argument/API                  | ``lyricsnmusic``   | ``lyricwiki``   |
++===============================+====================+=================+
+| positional (generic search)   | Yes                | No              |
++-------------------------------+--------------------+-----------------+
+| ``-a``, ``--artist``          | Yes                | Yes             |
++-------------------------------+--------------------+-----------------+
+| ``-t``, ``--title``           | Yes                | Yes             |
++-------------------------------+--------------------+-----------------+
+| ``-w``, ``--words``           | Yes                | No              |
++-------------------------------+--------------------+-----------------+
+| ``-l``, ``--list``            | Yes                | No              |
++-------------------------------+--------------------+-----------------+
+| ``-i``, ``--index``           | Yes                | No              |
++-------------------------------+--------------------+-----------------+
 
-**Note 2:** Where the lyrics have been returned below, the text body has
-been truncated after the first paragraph.
+(See the section below for more `usage notes on the
+APIs <https://github.com/ysim/songtext#notes-on-the-apis>`__.)
+
+**Note:** Where the lyrics have been returned below, the body of the
+lyric text has been truncated after the first paragraph.
 
 -  Search **all fields** (artist name, song name, lyrics):
 
@@ -229,88 +295,55 @@ been truncated after the first paragraph.
        9. Josh Ritter: Last Ditch Effort (See You Try)
          ("You have chosen dawn to leave"...)
 
--  Select a different API with the ``--api`` option, e.g.
-
-   ::
-
-       $ songtext --api lyricwiki -a andrew bird -t armchairs
-
-       Andrew Bird: Armchairs
-       ------------------------
-
-       I dreamed you were a cosmonaut
-       of the space between our chairs
-       and I was a cartographer
-       of the tangles in your hair
-
-Supported arguments by API
---------------------------
-
-+------------------------+--------------------+-----------------+
-| argument               | ``lyricsnmusic``   | ``lyricwiki``   |
-+========================+====================+=================+
-| positional             | Yes                | No              |
-+------------------------+--------------------+-----------------+
-| ``-a``, ``--artist``   | Yes                | Yes             |
-+------------------------+--------------------+-----------------+
-| ``-t``, ``--title``    | Yes                | Yes             |
-+------------------------+--------------------+-----------------+
-| ``-w``, ``--words``    | Yes                | No              |
-+------------------------+--------------------+-----------------+
-| ``-l``, ``--list``     | Yes                | No              |
-+------------------------+--------------------+-----------------+
-| ``-i``, ``--index``    | Yes                | No              |
-+------------------------+--------------------+-----------------+
-
 Notes on the APIs
 -----------------
 
-**LYRICSnMUSIC** is ideal if you don't know the full track name or you
-don't know either the artist or the track title, since it supports
-generic searches (i.e. on all fields). However, it sometimes returns the
-unobvious match for a search query, e.g.
+-  **LYRICSnMUSIC** is ideal if you don't know the full track name or
+   you don't know either the artist or the track title, since it
+   supports generic searches (i.e. on all fields). However, it sometimes
+   returns the unobvious match for a search query, e.g.
 
-::
+   ::
 
-    $ songtext --api lyricsnmusic stairway to heaven
+       $ songtext --api lyricsnmusic stairway to heaven
 
-    48 track(s) matched your search query.
-
-
-    Neil Sedaka: Stairway to Heaven
-    --------------------------------
-
-    Climb up, way up high
-    Climb up, way up high
-    Climb up, way up high
-
-**LyricWiki** seems to do better when you know exactly what you're
-looking for and are able to spell out the artist name and track title in
-full and accurately.
-
-For example:
-
-::
-
-    $ songtext --api lyricwiki -a interpol -t stella was a diver
-
-    Your query did not match any tracks.
+       48 track(s) matched your search query.
 
 
-    $ songtext --api lyricwiki -a interpol -t stella was a diver and she was always down
+       Neil Sedaka: Stairway to Heaven
+       --------------------------------
 
-    Interpol: Stella Was A Diver And She Was Always Down
-    ------------------------------------------------------
+       Climb up, way up high
+       Climb up, way up high
+       Climb up, way up high
 
-    (This one's called Stella Was A Diver And She Was Always Down)
+-  **LyricWiki** seems to do better when you know exactly what you're
+   looking for and are able to spell out the artist name and track title
+   in full and accurately.
 
-    When she walks down the street
-    She knows there's people watching
-    The building fronts are just fronts
-    To hide the people watching her
+   For example:
+
+   ::
+
+       $ songtext --api lyricwiki -a interpol -t stella was a diver
+
+       Your query did not match any tracks.
+
+
+       $ songtext --api lyricwiki -a interpol -t stella was a diver and she was always down
+
+       Interpol: Stella Was A Diver And She Was Always Down
+       ------------------------------------------------------
+
+       (This one's called Stella Was A Diver And She Was Always Down)
+
+       When she walks down the street
+       She knows there's people watching
+       The building fronts are just fronts
+       To hide the people watching her
 
 Author
 ------
 
--  Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
+-  Yi Qing Sim (`@yiqingsim <https://twitter.com/yiqingsim/>`__)
 
