@@ -33,24 +33,24 @@ this line to one of your shell startup files (e.g. `.bashrc` or
 
         export LYRICSNMUSIC_API_KEY=<your lyricsnmusic api key here>
 
-To query the LyricWiki API just for the command you're running, use the `--api`
-option, e.g. 
+* To query the LyricWiki API just for the command you're running, use the
+`--api` option, e.g. 
 
-    $ songtext --api lyricwiki -a andrew bird -t armchairs
+        $ songtext --api lyricwiki -a andrew bird -t armchairs
 
-    Andrew Bird: Armchairs
-    ------------------------
+        Andrew Bird: Armchairs
+        ------------------------
 
-    I dreamed you were a cosmonaut
-    of the space between our chairs
-    and I was a cartographer
-    of the tangles in your hair
+        I dreamed you were a cosmonaut
+        of the space between our chairs
+        and I was a cartographer
+        of the tangles in your hair
 
-To query a different API by default, set the `SONGTEXT_DEFAULT_API` environment
+* To query a different API by default, set the `SONGTEXT_DEFAULT_API` environment
 variable and add this line somewhere sensible (as for the
 `LYRICSNMUSIC_API_KEY` above), e.g.
 
-    export SONGTEXT_DEFAULT_API=lyricwiki
+        export SONGTEXT_DEFAULT_API=lyricwiki
 
 
 ## Usage
