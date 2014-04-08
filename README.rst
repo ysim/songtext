@@ -76,7 +76,7 @@ above):
 
 ::
 
-        export SONGTEXT_DEFAULT_API=lyricsnmusic
+    export SONGTEXT_DEFAULT_API=lyricsnmusic
 
 Usage
 -----
