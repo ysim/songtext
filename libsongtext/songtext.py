@@ -14,7 +14,7 @@ import os
 import sys
 
 
-DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricsnmusic')
+DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
 
 
 def get_song_lyrics(args):
