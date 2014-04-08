@@ -61,7 +61,7 @@ To query the LYRICSnMUSIC API by default, set the `SONGTEXT_DEFAULT_API`
 environment variable and add this line somewhere sensible (like you did for the
 `LYRICSNMUSIC_API_KEY` above):
 
-        export SONGTEXT_DEFAULT_API=lyricsnmusic
+    export SONGTEXT_DEFAULT_API=lyricsnmusic
 
 
 ## Usage
