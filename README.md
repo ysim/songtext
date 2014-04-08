@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ysim/songtext.svg?branch=master)](https://travis-ci.org/ysim/songtext)
+
 # songtext
 
 A command-line song lyric fetcher.

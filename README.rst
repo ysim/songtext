@@ -1,3 +1,5 @@
+|Build Status|
+
 songtext
 ========
 
@@ -369,3 +371,5 @@ Author
 
 -  Yi Qing Sim (`@yiqingsim <https://twitter.com/yiqingsim/>`__)
 
+.. |Build Status| image:: https://travis-ci.org/ysim/songtext.svg?branch=master
+   :target: https://travis-ci.org/ysim/songtext
