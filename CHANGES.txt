@@ -1,3 +1,10 @@
+v0.1.3 (2014-04-08)
+
+    * Added the encrypted LYRICSNMUSIC_API_KEY environment variable to
+    .travis.yml (#22)
+    * Made LyricWiki the default API (#23)
+    * Renamed test_songtext.py to test_apis.py (#24)
+
 v0.1.2 (2014-02-05)
 
     * Added instructions on how to change the default API to the README (#15)
@@ -10,7 +17,7 @@ v0.1.1 (2014-02-04)
 
     * Fixed relative/anchor links in READMEs so that README.rst will render
       properly on PyPI (#13)
-    * Adding the forgotten install_requires in setup.py (#14)
+    * Added the forgotten install_requires in setup.py (#14)
 
 
 v0.1.0 (2014-02-03)
