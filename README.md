@@ -8,8 +8,8 @@ Inspired by [@gleitz](https://twitter.com/gleitz)'s
 
 **Supported APIs:**
 
+* [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST) (default)
 * [LYRICSnMUSIC](http://www.lyricsnmusic.com/api)
-* [LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST)
 
 
 ## Installation
@@ -25,44 +25,55 @@ With distutils:
 
 ## Configuration
 
-* The LYRICSnMUSIC API is turned on by default, however it requires an API key;
-generate one easily here: <http://www.lyricsnmusic.com/api_keys/new> and export
-the `LYRICSNMUSIC_API_KEY` environment variable. You will probably want to add
-this line to one of your shell startup files (e.g. `.bashrc` or
-`.bash_profile`) like so:
+The LyricWiki API is turned on by default. The LYRICSnMUSIC API is also
+supported, however it requires an API key; you can generate one easily here: 
 
-        export LYRICSNMUSIC_API_KEY=<your lyricsnmusic api key here>
+<http://www.lyricsnmusic.com/api_keys/new> 
 
-* To query the LyricWiki API just for the command you're running, use the
+You will need to export the `LYRICSNMUSIC_API_KEY` environment variable for
+queries to this API to work, and probably want to add this line to one of
+your shell startup files (e.g. `.bashrc` or `.bash_profile`), like so:
+
+    export LYRICSNMUSIC_API_KEY=<your lyricsnmusic api key>
+
+To query the LYRICSnMUSIC API just for the command you're running, use the
 `--api` option, e.g. 
 
-        $ songtext --api lyricwiki -a andrew bird -t armchairs
+    $ songtext --api lyricsnmusic london grammar nightcall
 
-        Andrew Bird: Armchairs
-        ------------------------
+    33 track(s) matched your search query.
 
-        I dreamed you were a cosmonaut
-        of the space between our chairs
-        and I was a cartographer
-        of the tangles in your hair
 
-* To query a different API by default, set the `SONGTEXT_DEFAULT_API` environment
-variable and add this line somewhere sensible (as for the
-`LYRICSNMUSIC_API_KEY` above), e.g.
+    London Grammar: Nightcall
+    --------------------------
 
-        export SONGTEXT_DEFAULT_API=lyricwiki
+    I’m giving you a nightcall
+    To tell you how I feel
+    I’m gonna drive you through the night
+    Down the hills
+    I’m gonna tell you something
+    You don’t want to hear
+    I’m gonna show you where it’s dumped
+    But have no fear
+
+
+To query the LYRICSnMUSIC API by default, set the `SONGTEXT_DEFAULT_API`
+environment variable and add this line somewhere sensible (like you did for the
+`LYRICSNMUSIC_API_KEY` above):
+
+        export SONGTEXT_DEFAULT_API=lyricsnmusic
 
 
 ## Usage
 
-| argument/API                | `lyricsnmusic` | `lyricwiki` |
-| --------------------------  | --------------:| -----------:|
-| positional (generic search) | Yes            | No          |
-| `-a`, `--artist`            | Yes            | Yes         |
-| `-t`, `--title`             | Yes            | Yes         |
-| `-w`, `--words`             | Yes            | No          |
-| `-l`, `--list`              | Yes            | No          |
-| `-i`, `--index`             | Yes            | No          |
+| argument/API                | `lyricwiki` | `lyricsnmusic` |
+| --------------------------  | -----------:| --------------:|
+| positional (generic search) | No          | Yes            |
+| `-a`, `--artist`            | Yes         | Yes            |
+| `-t`, `--title`             | Yes         | Yes            |
+| `-w`, `--words`             | No          | Yes            |
+| `-l`, `--list`              | No          | Yes            |
+| `-i`, `--index`             | No          | Yes            |
 
 (See the section below for more [usage notes on the
 APIs](https://github.com/ysim/songtext#notes-on-the-apis).)
@@ -70,22 +81,8 @@ APIs](https://github.com/ysim/songtext#notes-on-the-apis).)
 **Note:** Where the lyrics have been returned below, the body of the lyric text
 has been truncated after the first paragraph.
 
-* Search **all fields** (artist name, song name, lyrics):
 
-        $ songtext johnny flynn tickle me pink
-
-        9 track(s) matched your search query.
-
-
-        Johnny Flynn: Tickle Me Pink
-        -----------------------------
-
-        Tickle me pink
-        I'm rosy as a flushed red apple skin
-        Except I've never been as sweet
-        I've rolled around the orchard
-        And found myself too awkward
-        And tickle me green I'm too naive
+### LyricWiki & LYRICSnMUSIC
 
 * Search by **artist name** (`-a, --artist`) and **song title**
 (`-t, --title`) -- optional for LYRICSnMUSIC, both mandatory for LyricWiki.
@@ -104,6 +101,29 @@ has been truncated after the first paragraph.
         und mit denen bleibt man besser nicht alleine
         Ich weiß, ich weiß, ich weiß und frage nicht
         Halt dich bei mir fest, steig auf, ich trage dich
+
+
+### LYRICSnMUSIC *only*
+
+All examples assume LYRICSnMUSIC as the default API.
+
+
+* Search **all fields** (artist name, song name, lyrics):
+
+        $ songtext johnny flynn tickle me pink
+
+        9 track(s) matched your search query.
+
+
+        Johnny Flynn: Tickle Me Pink
+        -----------------------------
+
+        Tickle me pink
+        I'm rosy as a flushed red apple skin
+        Except I've never been as sweet
+        I've rolled around the orchard
+        And found myself too awkward
+        And tickle me green I'm too naive
 
 * Search by **lyric text**  (`-w, --words`): 
 
@@ -260,26 +280,9 @@ number of matches returned in the list:
 
 ## Notes on the APIs
 
-* **LYRICSnMUSIC** is ideal if you don't know the full track name or you don't
-know either the artist or the track title, since it supports generic searches
-(i.e. on all fields). However, it sometimes returns the unobvious match for
-a search query, e.g.
-
-        $ songtext --api lyricsnmusic stairway to heaven
-
-        48 track(s) matched your search query.
-
-
-        Neil Sedaka: Stairway to Heaven
-        --------------------------------
-
-        Climb up, way up high
-        Climb up, way up high
-        Climb up, way up high
-
-* **LyricWiki** seems to do better when you know exactly what you're looking for
-and are able to spell out the artist name and track title in full and
-accurately.
+* **LyricWiki** seems to return more accurate single-track matches when you
+know exactly what you're looking for. The only downside is that you need to be
+able to spell out the artist name and track title accurately and in full.
 
     For example:
 
@@ -299,6 +302,23 @@ accurately.
         She knows there's people watching
         The building fronts are just fronts
         To hide the people watching her
+
+* **LYRICSnMUSIC** is ideal if you don't know the full track name or you don't
+know either the artist or the track title, since it supports generic searches
+(i.e. on all fields). However, it sometimes returns the unobvious match for
+a search query, e.g.
+
+        $ songtext --api lyricsnmusic stairway to heaven
+
+        48 track(s) matched your search query.
+
+
+        Neil Sedaka: Stairway to Heaven
+        --------------------------------
+
+        Climb up, way up high
+        Climb up, way up high
+        Climb up, way up high
 
 
 ## Author
