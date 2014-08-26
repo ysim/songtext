@@ -13,8 +13,17 @@ from importlib import import_module  # __import__ does not resolve dotted paths
 import os
 import sys
 
+from .properties import __version__
+
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
+
+
+def process_args(args):
+    if args.pop('version'):
+        print '%s.%s.%s' % __version__
+        return 0
+    get_song_lyrics(args)
 
 
 def get_song_lyrics(args):
@@ -48,6 +57,7 @@ def get_parser():
         nargs='+')
     parser.add_argument('--api', metavar='API_MODULE', type=str, nargs=1,
         default=DEFAULT_API)
+    parser.add_argument('-v', '--version', action='store_true')
     return parser
 
 
@@ -57,4 +67,4 @@ def main():
         parser.print_help()
         return 1
     args = vars(parser.parse_args())
-    return get_song_lyrics(args)
+    return process_args(args)
