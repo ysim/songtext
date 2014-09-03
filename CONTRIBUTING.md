@@ -34,3 +34,10 @@ process of setting up a development environment.
 1. Follow the [MuseScore Git workflow](http://musescore.org/en/developers-handbook/git-workflow)
 as a guide to setting remotes, branching, committing, making pull requests,
 etc.
+
+
+### Tips
+
+* You may want to grab this [git pre-commit hook](https://gist.github.com/ysim/9195375)
+which makes sure that you commit *both* `README.md` and `README.rst` whenever
+a change is made to `README.md`.
