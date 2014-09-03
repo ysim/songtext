@@ -57,7 +57,7 @@ def get_parser():
         nargs='+')
     parser.add_argument('--api', metavar='API_MODULE', type=str, nargs=1,
         default=DEFAULT_API)
-    parser.add_argument('-v', '--version', action='store_true')
+    parser.add_argument('-V', '--version', action='store_true')
     return parser
 
 
