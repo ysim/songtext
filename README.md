@@ -44,7 +44,7 @@ your shell startup files (e.g. `.bashrc` or `.bash_profile`), like so:
 To query the LYRICSnMUSIC API just for the command you're running, use the
 `--api` option, e.g. 
 
-    $ ./songtext --api lyricsnmusic taylor swift bad blood
+    $ songtext --api lyricsnmusic taylor swift bad blood
 
     48 track(s) matched your search query.
 
