@@ -1,3 +1,7 @@
+v0.1.4 (2015-??-??)
+
+    * Added the -V/--version flag
+
 v0.1.3 (2014-04-08)
 
     * Added the encrypted LYRICSNMUSIC_API_KEY environment variable to
@@ -18,7 +22,6 @@ v0.1.1 (2014-02-04)
     * Fixed relative/anchor links in READMEs so that README.rst will render
       properly on PyPI (#13)
     * Added the forgotten install_requires in setup.py (#14)
-
 
 v0.1.0 (2014-02-03)
 
