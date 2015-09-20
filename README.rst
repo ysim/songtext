@@ -16,6 +16,9 @@ word for
    (default)
 -  `LYRICSnMUSIC <http://www.lyricsnmusic.com/api>`__
 
+**Note:** Where the lyrics have been returned below in examples, the
+body of the lyric text has been truncated after the first paragraph.
+
 Installation
 ------------
 
@@ -54,22 +57,18 @@ the ``--api`` option, e.g.
 
 ::
 
-    $ songtext --api lyricsnmusic london grammar nightcall
+    $ ./songtext --api lyricsnmusic taylor swift bad blood
 
-    33 track(s) matched your search query.
+    48 track(s) matched your search query.
 
 
-    London Grammar: Nightcall
-    --------------------------
+    Taylor Swift: Bad Blood
+    ------------------------
 
-    I’m giving you a nightcall
-    To tell you how I feel
-    I’m gonna drive you through the night
-    Down the hills
-    I’m gonna tell you something
-    You don’t want to hear
-    I’m gonna show you where it’s dumped
-    But have no fear
+    'Cause baby now we got bad blood
+    You know it used to be mad love
+    So take a look at what you've done
+    'Cause baby now we got bad blood
 
 To query the LYRICSnMUSIC API by default, set the
 ``SONGTEXT_DEFAULT_API`` environment variable and add this line
@@ -101,9 +100,6 @@ Usage
 
 (See the section below for more `usage notes on the
 APIs <https://github.com/ysim/songtext#notes-on-the-apis>`__.)
-
-**Note:** Where the lyrics have been returned below, the body of the
-lyric text has been truncated after the first paragraph.
 
 LyricWiki & LYRICSnMUSIC
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -249,7 +245,7 @@ All examples assume LYRICSnMUSIC as the default API.
        Drifting thought the wind
        Wanting to start again
 
-   That looks more correct.
+   That's better.
 
 -  Optionally, pass one integer argument to the **list** option to limit
    the number of matches returned in the list:
