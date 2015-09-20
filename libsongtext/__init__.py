@@ -1,1 +1,1 @@
-from .properties import *
+from .properties import __version__
