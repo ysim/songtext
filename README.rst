@@ -347,8 +347,8 @@ Notes on the APIs
        The building fronts are just fronts
        To hide the people watching her
 
--  **LYRICSnMUSIC** is ideal if you don't know the full track name or
-   you don't know either the artist or the track title, since it
+-  **LYRICSnMUSIC** is more forgiving if you don't know the full track
+   name or you don't know either the artist or the track title, since it
    supports generic searches (i.e. on all fields). However, it sometimes
    returns the unobvious match for a search query, e.g.
 
