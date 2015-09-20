@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-
-####################################
-#                                  #
-# songtext                         #
-# --------                         #
-# Song lyrics in the command line! #
-#                                  #
-####################################
-
 import argparse
 from importlib import import_module  # __import__ does not resolve dotted paths
 import os
