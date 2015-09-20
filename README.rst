@@ -57,7 +57,7 @@ the ``--api`` option, e.g.
 
 ::
 
-    $ ./songtext --api lyricsnmusic taylor swift bad blood
+    $ songtext --api lyricsnmusic taylor swift bad blood
 
     48 track(s) matched your search query.
 
