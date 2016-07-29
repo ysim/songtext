@@ -17,9 +17,9 @@ process of setting up a development environment.
 
     And then add it to one of your bash startup scripts, e.g. 
 
-        $ echo 'LYRICSNMUSIC_API_KEY=my_thirty_character_alphanumeric_api_key' >> ~/.bashrc.local
+        $ echo 'export LYRICSNMUSIC_API_KEY=my_thirty_character_alphanumeric_api_key' >> ~/.bashrc.local
 
-    Make sure to source it before continuing.
+    Make sure to source it before continuing, e.g. `source ~/.bashrc.local`
 
 1. Run tests: 
 
