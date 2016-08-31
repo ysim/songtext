@@ -33,24 +33,23 @@ class LyricWikiSong(object):
     def __init__(self, args):
         self.args = args
 
-        for search_param in SEARCH_PARAMETERS.keys():
-            if search_param is None:
+        request_params = self.PARAMS.copy()
+        for k, v in SEARCH_PARAMETERS.items():
+            if self.args[k] is None:
                 print(
                     '\nThis API requires that you search with both the artist '
-                    'name (-a, --artist) and the song title (-t, --title).\n\n'
+                    'name (-a, --artist) and the song title (-t, --title). '
+                    'All other options will be ignored.\n\n'
                 )
                 raise ArgumentError
+            request_params[v] = self.args[k]
 
-        # Check if query matched any tracks
-        request_params = args.copy()
-        request_params.update(self.PARAMS)
         self.response = requests.get(API_URL, params=request_params)
         self.json = self.response.json()
         if not self.json['page_id']:
             print("\nYour query did not match any tracks.\n\n")
             raise SearchError
 
-        # Query matched a track
         self.url = self.json['url']
 
     def get_info(self):
@@ -87,19 +86,6 @@ class LyricWikiSong(object):
 
 
 def get_result(args):
-    if args['limit'] is not None:
-        print(
-            '\nThe list option (-l, --list) is not supported by this API '
-            'as it can only return a single match for each search.\n\n'
-        )
-        return 1
-    if args['words'] is not None:
-        print(
-            '\nThe words option (-w, --words) is not supported by this API '
-            '\n\n.'
-        )
-        return 1
-
     try:
         track = LyricWikiSong(args)
     except ArgumentError:
