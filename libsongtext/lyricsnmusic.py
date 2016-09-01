@@ -1,6 +1,3 @@
-# LYRICSnMUSIC API wrapper
-# Documentation: http://www.lyricsnmusic.com/api
-
 import os
 
 from lxml import html
