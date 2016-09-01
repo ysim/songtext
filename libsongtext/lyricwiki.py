@@ -48,14 +48,6 @@ class LyricWikiSong(object):
 
         self.url = self.json['url']
 
-    def get_info(self):
-        output = ""
-        line1 = u'\n{0}: {1}\n'.format(self.json['artist'], self.json['song'])
-        line2 = '{0}\n'.format('-' * len(line1))
-        output += line1
-        output += line2
-        return output
-
     def get_lyrics(self):
         response = requests.get(self.url)
         page_html =  html.document_fromstring(response.text)
