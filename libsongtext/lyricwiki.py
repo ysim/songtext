@@ -1,6 +1,3 @@
-# LyricWiki API wrapper
-# Documentation: http://api.wikia.com/wiki/LyricWiki_API/REST
-
 from lxml import html, etree
 from lxml.html.clean import clean_html
 import requests
