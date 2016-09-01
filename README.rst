@@ -57,18 +57,21 @@ the ``--api`` option, e.g.
 
 ::
 
-    $ songtext --api lyricsnmusic taylor swift bad blood
+    $ songtext --api lyricsnmusic kashmir
 
-    48 track(s) matched your search query.
+    40 track(s) matched your search query.
 
 
-    Taylor Swift: Bad Blood
-    ------------------------
-
-    'Cause baby now we got bad blood
-    You know it used to be mad love
-    So take a look at what you've done
-    'Cause baby now we got bad blood
+    Led Zeppelin: Kashmir
+    ---------------------
+    Oh, let the sun beat down upon my face
+    And stars fill my dream
+    I'm a traveler of both time and space
+    To be where I have been
+    To sit with elders of the gentle race
+    This world has seldom seen
+    They talk of days for which they sit and wait
+    All will be revealed
 
 To query the LYRICSnMUSIC API by default, set the
 ``SONGTEXT_DEFAULT_API`` environment variable and add this line
@@ -93,7 +96,11 @@ Usage
 +-------------------------------+-----------------+--------------------+
 | ``-w``, ``--words``           | No              | Yes                |
 +-------------------------------+-----------------+--------------------+
-| ``-l``, ``--list``            | No              | Yes                |
+| ``-l``, ``--show-list``       | No              | Yes                |
++-------------------------------+-----------------+--------------------+
+| ``--limit``                   | No              | Yes                |
++-------------------------------+-----------------+--------------------+
+| ``--no-pager``                | Yes             | Yes                |
 +-------------------------------+-----------------+--------------------+
 | ``-i``, ``--index``           | No              | Yes                |
 +-------------------------------+-----------------+--------------------+
@@ -101,66 +108,74 @@ Usage
 (See the section below for more `usage notes on the
 APIs <https://github.com/ysim/songtext#notes-on-the-apis>`__.)
 
+Note that option values that consist of more than one word need to be
+quoted as of v0.1.6.
+
 LyricWiki & LYRICSnMUSIC
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Search by **artist name** (``-a, --artist``) and **song title**
-   (``-t, --title``) -- optional for LYRICSnMUSIC, both mandatory for
-   LyricWiki.
+-  Search by both **artist name** (``-a, --artist``) *and* **song
+   title** (``-t, --title``) -- optional (but highly recommended) for
+   LYRICSnMUSIC, mandatory for LyricWiki:
 
    ::
 
-       $ songtext -a wir sind helden -t ein elefant für dich
+       $ songtext -a pvris -t fire
 
-       9 track(s) matched your search query.
+       PVRIS: Fire
+       -----------
+       Don't blame your death on the shit in your head
+       That you claimed ate you like a virus for days on end
+       I watched you decay, watched you waste away
+       Who'd you think you'd fool, baby, diggin' your own grave?
 
-
-       Wir Sind Helden: Ein Elefant für Dich
-       --------------------------------------
-
-       Ich seh uns beide, do bist längst zu schwer
-       Für meine Arme, aber ich geb dich nicht her
-       Ich weiß, deine Monster sind genau wie meine
-       und mit denen bleibt man besser nicht alleine
-       Ich weiß, ich weiß, ich weiß und frage nicht
-       Halt dich bei mir fest, steig auf, ich trage dich
+-  Paging is turned on by default. Use the ``--no-pager`` flag to turn
+   it off.
 
 LYRICSnMUSIC *only*
 ~~~~~~~~~~~~~~~~~~~
 
-All examples assume LYRICSnMUSIC as the default API.
+All the examples in this section assume LYRICSnMUSIC as the default API
+(i.e. omit ``--api lyricsnmusic``).
 
 -  Search **all fields** (artist name, song name, lyrics):
 
    ::
 
-       $ songtext johnny flynn tickle me pink
+       $ songtext spice girls stop
 
-       9 track(s) matched your search query.
+       43 track(s) matched your search query.
 
 
-       Johnny Flynn: Tickle Me Pink
-       -----------------------------
-
-       Tickle me pink
-       I'm rosy as a flushed red apple skin
-       Except I've never been as sweet
-       I've rolled around the orchard
-       And found myself too awkward
-       And tickle me green I'm too naive
+       Spice Girls: Stop
+       -----------------
+       You just walk in, I make you smile
+       It's cool but
+       You don't even know me
+       You take an inch, I run a mile
+       Can't win you're
+       Always right behind me
+       And we know that you could go and find some other
+       Take or leave it or just don't even bother
+       Caught in a craze, it's just a phase
+       Or will this be around forever
+       Don't you know it's going too fast (ooh, to fast)
+       Racing so heard you know it won't last (ooh, won't last)
+       Don't you know why can't you see
+       Slow it down, read the sign
+       So you know just where you're going
 
 -  Search by **lyric text** (``-w, --words``):
 
    ::
 
-       $ songtext -w sleeping is giving in
+       $ songtext -w 'sleeping is giving in'
 
-       23 track(s) matched your search query.
+       15 track(s) matched your search query.
 
 
        Arcade Fire: Rebellion (Lies)
-       ------------------------------
-
+       -----------------------------
        Sleeping is giving in, 
        No matter what the time is. 
        Sleeping is giving
@@ -182,137 +197,94 @@ All examples assume LYRICSnMUSIC as the default API.
 
    ::
 
-       $ songtext -t firework
+       $ songtext -t colors
 
-       48 track(s) matched your search query.
+       40 track(s) matched your search query.
 
 
-       Alabama: Fireworks
-       -------------------
+       Ice-T: Colors
+       -------------
+       Yo Ease let's do this
 
-       There are people in this country who work hard every day
-       Not for fame or fortune do they strive
-       But the fruits of their labor are worth more than their pay
-       And it's time a few of them were recognized
+       I am a nightmare walking, psychopath talking
+       King of my jungle just a gangster stalking
+       Living life like a firecracker quick is my fuse
+       Then dead as a deathpack the colors I choose
+       Red or Blue, 'cause or Blood, it just don't matter
+       Sucker die for your life when my shotgun scatters
+       We gangs of L.A. will never die - just multiply
 
-   WRONG! I wanted the Katy Perry version. Let's see the list of matches
-   that is returned from searching for the song title "firework":
+   WRONG! I wanted the Halsey version. Let's see the list of matches
+   that is returned from searching for the song title "colors":
 
    ::
 
-       $ songtext -t firework -l
+       $ songtext -t colors -l
 
-       48 track(s) matched your search query.
+       40 track(s) matched your search query.
 
 
        Displaying the top 10 matches:
 
-       0. Alabama: Fireworks
-          ("There are people in this country who work hard every day"...)
-       1. Siouxsie and the Banshees: Fireworks
-          ("The body is wrapped in shadow"...)
-       2. Alicia Keys and Drake: Fireworks
-          ("Money just changed everything, I wonder how life without it would go"...)
-       3. Alicia Keys and Drake: Fireworks
-          ("Oh, all I see is fireworks"...)
-       4. Alicia Keys and Drake: Fireworks
-          ("Oh, all I see is fireworks"...)
-       5. Blue Öyster Cult: Fireworks
-          ("She went down to her house by the water"...)
-       6. Katy Perry: Firework
-          ("Do you ever feel like a plastic bag"...)
-       7. Katy Perry: Firework
-          ("Do you ever feel like a plastic bag"...)
-       8. Kidz Bop Kids: Firework
-          ("Do you ever feel like a plastic bag"...)
-       9. Lea Michele: Firework
-          ("Do you ever feel like a plastic bag"...)
+         0. Ice-T: Colors
+            ("Yo Ease let's do this"...)
+         1. Ice-T: Colors
+            ("Yo Ease let's do this..."...)
+         2. The Oak Ridge Boys: Colors
+            ("Red as the bloodshed, blue as the wounded, white as the crosses on our soldier's graves. Through the rain, through the sun, these colors never run."...)
+         3. Mary J. Blige: Color
+            ("It took a long time to get to this place"...)
+         4. Coheed and Cambria: Colors
+            ("I walk so tired, so opaque"...)
+         5. Gucci Mane: Colors (full lyrics unavailable)
+         6. The Game and Sean Kingston: Colors
+            ("[Chorus]"...)
+         7. Halsey: Colors
+            ("Your little brother never tells you but he loves you so"...)
+         8. Amos Lee: Colors (full lyrics unavailable)
+         9. Call & Response: Colors
+            ("Sitting on the green green grass"...)
 
-   Looks like hit #6 is correct, so let's specify that with the **index
+   Looks like hit #7 is correct, so let's specify that with the **index
    option** (``-i, --index``):
 
    ::
 
-       $ songtext -t firework -i 6
+       $ songtext -t colors -i 7
 
-       48 track(s) matched your search query.
+       40 track(s) matched your search query.
 
-
-       Katy Perry: Firework
-       ---------------------
-
-       Do you ever feel like a plastic bag
-       Drifting thought the wind
-       Wanting to start again
+       Halsey: Colors
+       --------------
+       Your little brother never tells you but he loves you so
+       You said your mother only smiled on her TV show
+       You're only happy when your sorry head is filled with dope
+       I hope you make it to the day you're 28 years old
 
    That's better.
 
--  Optionally, pass one integer argument to the **list** option to limit
+-  Optionally, pass an integer argument to ``--limit`` option to limit
    the number of matches returned in the list:
 
    ::
 
-       $ songtext laura marling rambling man -l 5
+       $ songtext zayn befour -l --limit 5
 
-       24 track(s) matched your search query.
+       13 track(s) matched your search query.
 
 
        Displaying the top 5 matches:
 
-       0. Laura Marling: Rambling Man
-          ("Oh naive little me"...)
-       1. Laura Marling: Blackberry Stone
-          ("Well I, own this field"...)
-       2. Laura Marling: Darkness Descends
-          ("You're holding bits of styrofoam"...)
-       3. Laura Marling: Hope in the Air
-          ("There is a man that I know"...)
-       4. Laura Marling: Alpha Shallows
-          ("He could fall and she could weep"...)
-
-   Note that because it is optional and *may* take one argument, if
-   you're using this option without an argument before any position
-   arguments (QUERY), you will have to separate them with two dashes
-   (``--``) to indicate the end of the optional arguments so the shell
-   will not consume the first word of the positional argument[s] as the
-   argument for the list option. For example:
-
-   ::
-
-       $ songtext -l josh ritter snow is gone
-       usage: songtext.py [-h] [-l [NUM_MATCHES]] [-i INDEX]
-       [-a ARTIST_NAME [ARTIST_NAME ...]]
-       [-t SONG_TITLE [SONG_TITLE ...]] [-w LYRICS [LYRICS ...]]
-       [--api API_MODULE]
-       [QUERY [QUERY ...]]
-       songtext.py: error: argument -l/--list: invalid int value: 'josh'
-       $ songtext -l -- josh ritter snow is gone
-
-       34 track(s) matched your search query.
-
-
-       Displaying the top 10 matches:
-
-       0. Josh Ritter: Snow Is Gone
-          ("Birds beneath my window dusting their wings upon the lawn"...)
-       1. Josh Ritter: Snow Is Gone [Live][*]
-          ("Birds beneath my window dusting their wings upon the lawn"...)
-       2. Josh Ritter: Morning Is a Long Way Down
-          ("Wrap your arms around me"...)
-       3. Josh Ritter: Horrible Qualities/Stuck to You
-          ("There's one thing, mama,"...)
-       4. Josh Ritter: Last Ditch Effort
-          (""...)
-       5. Josh Ritter: Paths Will Cross
-          ("This is it my dear old friend"...)
-       6. Josh Ritter: Hotel Song
-          ("Sunday night, its supper time, the hotel?s full and all is fine."...)
-       7. Josh Ritter: Potters Wheel
-          ("I close my eyes and it all returns like the spinning of a potter's wheel"...)
-       8. Josh Ritter: Love Is Making Its Way Back Home
-          ("Dot paths the moonly road"...)
-       9. Josh Ritter: Last Ditch Effort (See You Try)
-         ("You have chosen dawn to leave"...)
+         0. ZAYN: BeFoUr
+            ("I've done this before"...)
+         1. BeFour: All 4 One
+            ("All 4 one and one 4 all"...)
+         2. BeFour: Cosmic Ride
+            ("Dum dam da di da di dai"...)
+         3. BeFour: Zero Gravity
+            ("I start the engine of my rocket"...)
+         4. BeFour: A New Generation
+            ("You're the voice of a new generation"...)
 
 Notes on the APIs
 -----------------
@@ -331,42 +303,41 @@ Notes on the APIs
        Your query did not match any tracks.
 
 
-       $ songtext --api lyricwiki -a interpol -t stella was a diver and she was always down
+       $ songtext --api lyricwiki -a interpol -t 'stella was a diver and she was always down'
 
        Interpol: Stella Was A Diver And She Was Always Down
-       ------------------------------------------------------
+       ----------------------------------------------------
 
-       (This one's called Stella Was A Diver And She Was Always Down)
+       This one's called 'Stella was a diver and she is always down'
 
        When she walks down the street
        She knows there's people watching
        The building fronts are just fronts
        To hide the people watching her
 
--  **LYRICSnMUSIC** is more forgiving if you don't know the full track
-   name or you don't know either the artist or the track title, since it
-   supports generic searches (i.e. on all fields). However, it sometimes
-   returns the unobvious match for a search query, e.g.
+-  **LYRICSnMUSIC** might be the better option if you aren't completely
+   sure of your search terms, since it provides the option of listing
+   the possible hits. It is recommended that you use the individual
+   search fields rather than the generic search (on all fields), which
+   is rather janky and often does not return the obvious result:
 
    ::
 
-       $ songtext --api lyricsnmusic stairway to heaven
+       $ songtext --api lyricsnmusic britney spears baby one more time
 
        48 track(s) matched your search query.
 
 
-       Neil Sedaka: Stairway to Heaven
-       --------------------------------
-
-       Climb up, way up high
-       Climb up, way up high
-       Climb up, way up high
-
-Links
------
-
--  LyricWiki documentation: http://api.wikia.com/wiki/LyricWiki_API/REST
--  LYRICSnMUSIC documentation: http://www.lyricsnmusic.com/api
+       The Time: The Bird
+       ------------------
+       Hold on, hold on, why y'all beatin' on shit, what's that mean?
+       Hold up, do y'all wanna learn a new dance?
+       Are you qualified to learn one? That's what I thought
+       Who can dance out there? Okay, we gonna try a new dance
+       And if I don't see everybody doin' it, I don't wanna see you no more
+       Jellybean, are we ready? y'all better do this one
+       What time is it? Alright, y'all got 10 seconds
+       To get to the dance floor and whawk
 
 Author
 ------
