@@ -362,6 +362,12 @@ Notes on the APIs
        Climb up, way up high
        Climb up, way up high
 
+Links
+-----
+
+-  LyricWiki documentation: http://api.wikia.com/wiki/LyricWiki_API/REST
+-  LYRICSnMUSIC documentation: http://www.lyricsnmusic.com/api
+
 Author
 ------
 
