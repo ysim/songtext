@@ -1,14 +1,12 @@
 # LyricWiki API wrapper
 # Documentation: http://api.wikia.com/wiki/LyricWiki_API/REST
 
-from pydoc import pager
-
 from lxml import html, etree
 from lxml.html.clean import clean_html
 import requests
 
 from errors import ArgumentError, SearchError
-from utils import format_song_info
+from utils import format_song_info, output_song
 
 
 API_URL = 'http://lyrics.wikia.com/api.php'
@@ -81,5 +79,5 @@ def get_result(args):
     except ArgumentError:
         return 1
 
-    pager(track.get_lyrics())
+    output_song(track.get_lyrics(), args['no_pager'])
     return 0
