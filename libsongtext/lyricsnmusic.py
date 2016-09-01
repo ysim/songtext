@@ -1,14 +1,13 @@
 # LYRICSnMUSIC API wrapper
 # Documentation: http://www.lyricsnmusic.com/api
 
-from pydoc import pager
 import os
 
 from lxml import html
 import requests
 
 from errors import SearchError
-from utils import format_song_info
+from utils import format_song_info, output_song
 
 
 try:
@@ -91,7 +90,7 @@ class LNMTrackList(object):
             self.json[self.args['index']]['title']
         )
         lyric_output = element.text_content()
-        return u'{}{}'.format(info_output, lyric_output)
+        return u'{}{}\n\n'.format(info_output, lyric_output)
 
 
 def get_result(args):
@@ -102,5 +101,5 @@ def get_result(args):
         if args['index'] is None:
             return 0
 
-    pager(tracklist.get_lyrics())
+    output_song(tracklist.get_lyrics(), args['no_pager'])
     return 0
