@@ -1,10 +1,5 @@
 # LyricWiki API wrapper
 # Documentation: http://api.wikia.com/wiki/LyricWiki_API/REST
-#
-# Notable points:
-# - There is no general search parameter; one can only search by song and
-#   artist ('getSong') or only by artist ('getArtist'), which returns the
-#   entire discography without any links.
 
 from pydoc import pager
 
@@ -13,6 +8,7 @@ from lxml.html.clean import clean_html
 import requests
 
 from errors import ArgumentError, SearchError
+from utils import format_song_info
 
 
 API_URL = 'http://lyrics.wikia.com/api.php'
@@ -80,9 +76,11 @@ class LyricWikiSong(object):
         # Remove HTML comments
         real_string = etree.tostring(element, encoding=unicode)
         cleaned_html = clean_html(real_string)
-        return u'{0}'.format(
-            html.fragment_fromstring(cleaned_html).text_content()
-        )
+
+        info_output = format_song_info(self.json['artist'], self.json['song'])
+        lyric_output = html.fragment_fromstring(cleaned_html).text_content()
+
+        return u'{}{}'.format(info_output, lyric_output)
 
 
 def get_result(args):
@@ -91,5 +89,5 @@ def get_result(args):
     except ArgumentError:
         return 1
 
-    pager(track.get_info() + track.get_lyrics())
+    pager(track.get_lyrics())
     return 0
