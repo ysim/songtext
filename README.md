@@ -319,6 +319,12 @@ match for a search query, e.g.
         Climb up, way up high
 
 
+## Links
+
+* LyricWiki documentation: <http://api.wikia.com/wiki/LyricWiki_API/REST>
+* LYRICSnMUSIC documentation: <http://www.lyricsnmusic.com/api>
+
+
 ## Author
 
 * Yi Qing Sim ([@yiqingsim](https://twitter.com/yiqingsim/))
