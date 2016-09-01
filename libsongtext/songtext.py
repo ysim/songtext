@@ -21,8 +21,9 @@ AVAILABLE_APIS = ['lyricwiki', 'lyricsnmusic']
 @click.option('-l', '--show-list', default=False, is_flag=True)
 @click.option('--limit', default=10)
 @click.option('-i', '--index', type=int)
+@click.option('--no-pager', default=False, is_flag=True)
 @click.argument('all_fields', required=False, nargs=-1)
-def cli(api, version, artist, title, words, show_list, limit, index, all_fields):
+def cli(api, version, artist, title, words, show_list, limit, index, no_pager, all_fields):
     if version:
         click.echo('{}.{}.{}'.format(*__version__))
         return 0
@@ -35,6 +36,7 @@ def cli(api, version, artist, title, words, show_list, limit, index, all_fields)
         'list': show_list,
         'limit': limit,
         'index': index,
+        'no_pager': no_pager,
         'all_fields': all_fields
     }
     return getattr(api_module, 'get_result')(params)
