@@ -8,6 +8,7 @@ from lxml import html
 import requests
 
 from errors import SearchError
+from utils import format_song_info
 
 
 try:
@@ -79,23 +80,18 @@ class LNMTrackList(object):
             output += line
         return output
 
-    def get_info(self):
-        output = ""
-        line1 = u'{0}: {1}\n'.format(
-            self.json[self.args['index']]['artist']['name'],
-            self.json[self.args['index']]['title']
-        )
-        line2 = "{0}\n".format("-" * len(line1))
-        output += line1
-        output += line2
-        return output
-
     def get_lyrics(self):
         track_url = self.json[self.args['index']]['url']
         response = requests.get(track_url)
         page_html = html.document_fromstring(response.text)
         element = page_html.cssselect(self.CSS_SELECTOR)[0]
-        return u'{0}\n\n'.format(element.text_content())
+
+        info_output = format_song_info(
+            self.json[self.args['index']]['artist']['name'],
+            self.json[self.args['index']]['title']
+        )
+        lyric_output = element.text_content()
+        return u'{}{}'.format(info_output, lyric_output)
 
 
 def get_result(args):
@@ -106,5 +102,5 @@ def get_result(args):
         if args['index'] is None:
             return 0
 
-    pager(tracklist.get_info() + tracklist.get_lyrics())
+    pager(tracklist.get_lyrics())
     return 0
