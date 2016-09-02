@@ -5,7 +5,8 @@ import sys
 
 import click
 
-from .properties import __version__
+from errors import ArgumentError, TrackIndexError, SearchError
+from properties import __version__
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
@@ -19,7 +20,7 @@ AVAILABLE_APIS = ['lyricwiki', 'lyricsnmusic']
 @click.option('-t', '--title')
 @click.option('-w', '--words')
 @click.option('-l', '--show-list', default=False, is_flag=True)
-@click.option('--limit', default=10)
+@click.option('--limit', type=int)
 @click.option('-i', '--index', type=int)
 @click.option('--no-pager', default=False, is_flag=True)
 @click.argument('all_fields', required=False, nargs=-1)
@@ -43,4 +44,8 @@ def cli(api, version, artist, title, words, show_list, limit, index, no_pager, a
 
 
 def main():
-    return cli()
+    try:
+        cli()
+    except (ArgumentError, TrackIndexError, SearchError):
+        return 1
+    return 0
