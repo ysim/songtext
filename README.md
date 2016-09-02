@@ -255,7 +255,7 @@ able to spell out the artist name and track title accurately and in full.
 
     For example:
 
-        $ songtext --api lyricwiki -a interpol -t stella was a diver
+        $ songtext --api lyricwiki -a interpol -t 'stella was a diver'
 
         Your query did not match any tracks.
 
