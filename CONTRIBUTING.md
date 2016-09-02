@@ -24,12 +24,16 @@ process of setting up a development environment.
 1. Run tests: 
 
         $ make test
-        python -m unittest discover --buffer
-        .............
-        ----------------------------------------------------------------------
-        Ran 13 tests in 16.012s
+        pytest tests/
+        ============================= test session starts ==============================
+        platform darwin -- Python 2.7.10, pytest-3.0.1, py-1.4.31, pluggy-0.3.1
+        rootdir: /path/to/songtext, inifile: 
+        collected 16 items
 
-        OK
+        tests/test_api_integrations.py ..............
+        tests/test_local_options.py ..
+
+        ========================== 16 passed in 6.42 seconds ===========================
 
 1. Follow the [MuseScore Git workflow](http://musescore.org/en/developers-handbook/git-workflow)
 as a guide to setting remotes, branching, committing, making pull requests,
