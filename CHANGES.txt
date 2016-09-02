@@ -1,6 +1,8 @@
-v0.1.5 (????-??-??)
+v0.1.5 (2016-09-02)
 
     * Added default paging (#3)
+    * Added better exception handling
+    * Made it easier to plug in additional API modules
 
 v0.1.4 (2015-09-20)
 
