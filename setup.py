@@ -32,7 +32,7 @@ setup(
     install_requires=[
         'click==6.6',
         'cssselect==0.9.2',
-        'lxml>=3.2.5',
+        'lxml==3.6.4',
         'requests==2.11.1',
     ],
     license='BSD',
