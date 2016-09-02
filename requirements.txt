@@ -3,5 +3,5 @@ cssselect==0.9.2
 lxml==3.2.5
 py==1.4.31
 pytest==3.0.1
-requests==2.2.1
+requests==2.11.1
 wsgiref==0.1.2
