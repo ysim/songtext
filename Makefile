@@ -2,7 +2,7 @@ readme:
 	pandoc --from=markdown-citations --to=rst --output=README.rst README.md
 
 test:
-	python -m unittest discover --buffer
+	pytest tests/
 
 test_verbose:
 	python -m unittest discover
