@@ -1,5 +1,7 @@
 click==6.6
 cssselect==0.9.1
 lxml==3.2.5
+py==1.4.31
+pytest==3.0.1
 requests==2.2.1
 wsgiref==0.1.2
