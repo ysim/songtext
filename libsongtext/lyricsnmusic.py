@@ -3,19 +3,18 @@ import os
 from lxml import html
 import requests
 
-from errors import SearchError
+from errors import SearchError, TrackIndexError
 from utils import format_song_info, output_song
 
 
 try:
     API_KEY = os.environ['LYRICSNMUSIC_API_KEY']
 except KeyError:
-    print
-    print "You must have the LYRICSNMUSIC_API_KEY environment variable set."
-    print "If you don't have an API key, you can get one from here:"
-    print
-    print "\thttp://www.lyricsnmusic.com/api_keys/new\n"
-    raise
+    print(
+        "You must have the LYRICSNMUSIC_API_KEY environment variable set."
+        "If you don't have an API key, you can get one from here:"
+        "\n\n\thttp://www.lyricsnmusic.com/api_keys/new\n"
+    )
 
 
 API_URL = 'http://api.lyricsnmusic.com/songs'
@@ -49,6 +48,13 @@ class LNMTrackList(object):
             raise SearchError
         else:
             print("\n{} track(s) matched your search query.\n\n".format(self.count))
+
+        if self.args['index'] >= self.count:
+            print(
+                "\nThe track index you specified is out of range. "
+                "Select another track.\n\n"
+            )
+            raise TrackIndexError
 
     def get_response(self):
         params = { 'api_key': API_KEY }
@@ -93,7 +99,7 @@ class LNMTrackList(object):
 def get_result(args):
     tracklist = LNMTrackList(args)
 
-    if args['list']:
+    if args['list'] or args['limit']:
         print(tracklist.get_list())
         if args['index'] is None:
             return 0

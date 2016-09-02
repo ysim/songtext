@@ -71,10 +71,5 @@ class LyricWikiSong(object):
 
 
 def get_result(args):
-    try:
-        track = LyricWikiSong(args)
-    except ArgumentError:
-        return 1
-
+    track = LyricWikiSong(args)
     output_song(track.get_lyrics(), args['no_pager'])
-    return 0
