@@ -6,4 +6,4 @@ FILE_BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 ROOT_PATH = os.path.abspath(os.path.dirname(FILE_BASE_PATH))
 sys.path.insert(0, ROOT_PATH)
 
-from libsongtext import songtext
+from libsongtext import errors, songtext
