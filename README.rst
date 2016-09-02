@@ -298,7 +298,7 @@ Notes on the APIs
 
    ::
 
-       $ songtext --api lyricwiki -a interpol -t stella was a diver
+       $ songtext --api lyricwiki -a interpol -t 'stella was a diver'
 
        Your query did not match any tracks.
 
