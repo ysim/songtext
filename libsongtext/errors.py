@@ -3,3 +3,6 @@ class ArgumentError(Exception):
 
 class SearchError(Exception):
     pass
+
+class TrackIndexError(Exception):
+    pass
