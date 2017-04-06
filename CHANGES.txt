@@ -1,3 +1,7 @@
+v0.1.6
+
+    * Removed LYRICSnMUSIC api as it has been shut down (#31)
+
 v0.1.5 (2016-09-02)
 
     * Added default paging (#3)
