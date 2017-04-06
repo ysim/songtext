@@ -1,6 +1,6 @@
 appdirs==1.4.3
 click==6.7
-cssselect==0.9.2
+cssselect==1.0.1
 lxml==3.6.4
 packaging==16.8
 py==1.4.31
