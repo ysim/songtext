@@ -10,7 +10,7 @@ from properties import __version__
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
-AVAILABLE_APIS = ['lyricwiki', 'lyricsnmusic']
+AVAILABLE_APIS = ['lyricwiki']
 
 
 @click.command()
