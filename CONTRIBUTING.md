@@ -40,6 +40,73 @@ as a guide to setting remotes, branching, committing, making pull requests,
 etc.
 
 
+### Writing your own integration
+
+* Add your package to `libsongtext/` and then the package name to
+`libsongtext/songtext.py`, in the `AVAILABLE_APIS` variable.
+
+* To query your new API, use the `--api` option:
+
+        $ songtext --api my-spiffy-api ...
+
+* To query your new API by default, set the `SONGTEXT_DEFAULT_API`
+environment variable and add this line somewhere sensible (e.g. `.bashrc` or
+`.bash_profile` or some other shell startup file):
+
+        export SONGTEXT_DEFAULT_API=my-spiffy-api
+
+*Params:*
+
+Other than the ones already used in LyricWiki (artist, song title), it is
+also possible to make use of other params already defined in click:
+
+* `all_fields` - this is for generic search (e.g. on artist name, song name, and lyrics). Search like so:
+
+        $ songtext spice girls stop
+
+* `words` - for searching on lyric text. Search using the `-w` or `--words`
+flag:
+
+        $ songtext -w 'sleeping is giving in'
+
+* `list` - to return a list of results in order to refine your search (e.g.
+if the lyrics returned were for the wrong song, or the requested lyrics
+weren't available or some reason). Search using the`-l`/`--show-list` option:
+
+        $ songtext -t colors -l
+
+        40 track(s) matched your search query.
+
+
+        Displaying the top 10 matches:
+        ...
+
+* `index` - for specifying the song that you want to select when searching
+using a list. Search using the `-i`/`--index` option:
+
+        $ songtext -t colors -i 7
+
+        40 track(s) matched your search query.
+
+        Halsey: Colors
+        --------------
+        Your little brother never tells you but he loves you so
+        You said your mother only smiled on her TV show
+        You're only happy when your sorry head is filled with dope
+        I hope you make it to the day you're 28 years old
+
+* `limit` - limit the number of matches returned in a list. Search using
+the `--limit` option:
+
+        $ songtext zayn befour -l --limit 5
+
+        13 track(s) matched your search query.
+
+
+        Displaying the top 5 matches:
+        ...
+
+
 ### Tips
 
 * You may want to grab this [git pre-commit hook](https://gist.github.com/ysim/9195375)
