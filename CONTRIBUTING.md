@@ -112,6 +112,6 @@ the `--limit` option:
 * Modify `README.md` and then run `make readme` to convert it to `README.rst`
 for PyPI.
 
-* You may want to grab this [git pre-commit hook](https://gist.github.com/ysim/9195375)
+* Copy the git hook from `git-hooks/pre-commit` to `.git/hooks/pre-commit`,
 which makes sure that you commit *both* `README.md` and `README.rst` whenever
 a change is made to `README.md`.
