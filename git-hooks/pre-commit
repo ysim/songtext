@@ -1,0 +1,12 @@
+#!/bin/bash
+
+matches="$(git diff --cached --name-only | grep -E "README\.(md|rst)" | wc -l | awk -F' ' '{printf $1}')"
+
+error_msg="
+Both README.md and README.rst must be modified and staged in order to commit
+readme updates.\n\n"
+
+if [[ $matches -ne 2 ]] && [[ $matches -ne 0 ]] ; then
+    echo -e "$error_msg"
+    exit 1
+fi
