@@ -1,3 +1,7 @@
+v0.1.7 (2017-04-07)
+
+    * Update README.rst (forgot to run `make readme` before uploading last release)
+
 v0.1.6 (2017-04-07)
 
     * Removed LYRICSnMUSIC api as it has been shut down (#31)
