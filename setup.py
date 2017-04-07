@@ -20,7 +20,7 @@ setup(
     version=version,
     url='https://github.com/ysim/songtext',
     author='Yi Qing Sim',
-    author_email='ysim90@gmail.com',
+    author_email='yq@yiqingsim.net',
     description='a command-line song lyric fetcher',
     long_description=long_description,
     packages=find_packages(),
