@@ -109,6 +109,9 @@ the `--limit` option:
 
 ### Tips
 
+* Modify `README.md` and then run `make readme` to convert it to `README.rst`
+for PyPI.
+
 * You may want to grab this [git pre-commit hook](https://gist.github.com/ysim/9195375)
 which makes sure that you commit *both* `README.md` and `README.rst` whenever
 a change is made to `README.md`.
