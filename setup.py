@@ -33,7 +33,7 @@ setup(
         'click==6.7',
         'cssselect==1.0.1',
         'lxml==3.7.3',
-        'requests==2.13.0',
+        'requests==2.21.0',
     ],
     license='BSD',
     keywords='console command line music song lyrics',
