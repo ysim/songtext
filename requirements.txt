@@ -4,7 +4,7 @@ chardet==3.0.4
 click==6.7
 cssselect==1.0.1
 idna==2.8
-lxml==3.7.3
+lxml==4.3.0
 packaging==16.8
 pkg-resources==0.0.0
 py==1.4.33
