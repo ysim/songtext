@@ -12,15 +12,6 @@ process of setting up a development environment.
 
         $ pip install -r requirements.txt
 
-1. If you don't already have a LYRICSnMUSIC API key, get one here: 
-<http://www.lyricsnmusic.com/api_keys/new>
-
-    And then add it to one of your bash startup scripts, e.g. 
-
-        $ echo 'export LYRICSNMUSIC_API_KEY=my_thirty_character_alphanumeric_api_key' >> ~/.bashrc.local
-
-    Make sure to source it before continuing, e.g. `source ~/.bashrc.local`
-
 1. Run tests: 
 
         $ make test
