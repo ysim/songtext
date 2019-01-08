@@ -2,7 +2,7 @@ appdirs==1.4.3
 certifi==2018.11.29
 chardet==3.0.4
 click==6.7
-cssselect==1.0.1
+cssselect==1.0.3
 idna==2.8
 lxml==4.3.0
 packaging==16.8
