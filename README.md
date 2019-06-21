@@ -45,7 +45,7 @@ Search by both **artist name** (`-a, --artist`) *and* **song title**
 
 Note that option values that consist of more than one word need to be quoted:
 
-        $ ./songtext -a 'nina simone' -t sinnerman
+        $ songtext -a 'nina simone' -t sinnerman
 
         Nina Simone: Sinnerman
         ----------------------
@@ -72,4 +72,4 @@ it off.
 
 ## Author
 
-* Yi Qing Sim ([@ysim](https://github.com/ysim/))
+* ([@ysim](https://github.com/ysim/))
