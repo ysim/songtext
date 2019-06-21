@@ -1,7 +1,7 @@
 import click
 from click.testing import CliRunner
 
-from .context import errors, songtext
+from tests.context import errors, songtext
 
 
 runner = CliRunner()
