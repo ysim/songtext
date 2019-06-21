@@ -1,7 +1,8 @@
 language: python
 python:
   - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 install: "pip install -r requirements.txt"
 script: "make test"
-env:
-  - secure: "CpoWpIbAv56TBO/5+FtIRSSiw465GFr3+F+q5d51VqxRnjYUvjKdStS7agB2RTMm72ibvu0TqcZoqfiFyM6bJptDIXt2EB1Klnic0PGnpfNOxqPTpjfaXbI6ZLgqJKcHvkYFPwGz8YM4Nbmf/F8h2jho7RTzWLCNWt8qF8PLyjU="

@@ -1,7 +1,7 @@
 import click
 from click.testing import CliRunner
 
-from .context import songtext
+from tests.context import songtext
 
 
 runner = CliRunner()
@@ -16,4 +16,4 @@ class TestGeneral:
     def test_version(self):
         result = runner.invoke(songtext.cli, ['--version'])
         assert result.exit_code == 0
-        assert result.output == '0.1.8\n'
+        assert result.output == '0.1.9\n'
