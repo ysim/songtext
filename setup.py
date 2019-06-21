@@ -18,23 +18,27 @@ except IOError:
 setup(
     name='songtext',
     version=version,
-    url='https://github.com/ysim/songtext',
-    author='Yi Qing Sim',
-    author_email='yq@yiqingsim.net',
     description='a command-line song lyric fetcher',
     long_description=long_description,
+    url='https://github.com/ysim/songtext',
+    author='ysim',
+    author_email='opensource@yiqingsim.net',
+
     packages=find_packages(),
+
     entry_points={
         'console_scripts': [
             'songtext = libsongtext.songtext:main',
         ],
     },
+
     install_requires=[
         'click==7.0',
         'cssselect==1.0.3',
         'lxml==4.3.0',
         'requests==2.21.0',
     ],
+
     license='BSD',
     keywords='console command line music song lyrics',
     classifiers=[
