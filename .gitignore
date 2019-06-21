@@ -1,5 +1,8 @@
-*.pyc
+*.py[oc]
+
+build/
 *.egg-info
+*.egg*
 dist
 
 .cache/
