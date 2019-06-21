@@ -1,12 +1,11 @@
-import argparse
 from importlib import import_module  # __import__ does not resolve dotted paths
 import os
 import sys
 
 import click
 
-from errors import ArgumentError, TrackIndexError, SearchError
-from properties import __version__
+from libsongtext.errors import ArgumentError, TrackIndexError, SearchError
+from libsongtext.properties import __version__
 
 
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
