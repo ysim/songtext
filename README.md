@@ -79,4 +79,4 @@ it off.
 
 ## Author
 
-* ([@ysim](https://github.com/ysim/))
+* [@ysim](https://github.com/ysim/)
