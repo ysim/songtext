@@ -3,6 +3,13 @@
 New contributors are always welcome! This document will guide you through the
 process of setting up a development environment.
 
+[LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST) is currently the
+only supported API.
+
+[LYRICSnMUSIC](http://www.lyricsnmusic.com/api) used to be an option but it
+appears to have been shut down. However, contributions for new API integrations
+are especially welcome.
+
 
 ### Instructions
 
@@ -10,7 +17,7 @@ process of setting up a development environment.
 
 1. Make a virtualenv, activate it, and then install the pip dependencies:
 
-        $ pip install -r requirements.txt
+        $ pip install -r requirements-dev.txt
 
 1. Run tests: 
 

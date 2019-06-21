@@ -5,20 +5,10 @@ songtext
 
 A command-line song lyric fetcher.
 
-Inspired by `@gleitz <https://twitter.com/gleitz>`__'s
+Inspired by `@gleitz <https://twitter.com/gleitz>`__\ ’s
 `howdoi <https://github.com/gleitz/howdoi>`__. Name from the `German
 word for
-"lyrics" <http://www.dict.cc/deutsch-englisch/Songtext.html>`__.
-
-**APIs:**
-
-`LyricWiki <http://api.wikia.com/wiki/LyricWiki_API/REST>`__ is
-currently the only supported API.
-
-`LYRICSnMUSIC <http://www.lyricsnmusic.com/api>`__ used to be an option
-but it appears to have been shut down. However,
-`contributions <CONTRIBUTING.md>`__ are always welcome, especially for
-new API integrations.
+“lyrics” <http://www.dict.cc/deutsch-englisch/Songtext.html>`__.
 
 Installation
 ------------
@@ -27,13 +17,13 @@ With pip:
 
 ::
 
-    $ pip install songtext
+   $ pip install songtext
 
 With distutils:
 
 ::
 
-    $ python setup.py install
+   $ python setup.py install
 
 Usage
 -----
@@ -43,56 +33,66 @@ Search by both **artist name** (``-a, --artist``) *and* **song title**
 
 ::
 
-        $ songtext -a pvris -t fire
+       $ songtext -a pvris -t fire
 
-        PVRIS: Fire
-        -----------
-        Don't blame your death on the shit in your head
-        That you claimed ate you like a virus for days on end
-        I watched you decay, watched you waste away
-        Who'd you think you'd fool, baby, diggin' your own grave?
+       PVRIS: Fire
+       -----------
+       Don't blame your death on the shit in your head
+       That you claimed ate you like a virus for days on end
+       I watched you decay, watched you waste away
+       Who'd you think you'd fool, baby, diggin' your own grave?
 
-Note that option values that consist of more than one word need to be
-quoted:
+Option values that consist of more than one word need to be quoted:
 
 ::
 
-        $ ./songtext -a 'nina simone' -t sinnerman
+       $ songtext -a 'nina simone' -t sinnerman
 
-        Nina Simone: Sinnerman
-        ----------------------
-        Oh sinnerman, where you gonna run to?
-        Sinnerman, where you gonna run to?
-        Where you gonna run to?
-        All along dem day
+       Nina Simone: Sinnerman
+       ----------------------
+       Oh sinnerman, where you gonna run to?
+       Sinnerman, where you gonna run to?
+       Where you gonna run to?
+       All along dem day
+
+Punctuation is important too:
+
+::
+
+       $ songtext -a "shawn mendes" -t "theres nothing holdin me back"
+
+       Your query did not match any tracks.
+
+
+       $ songtext -a "shawn mendes" -t "there's nothing holdin' me back"
+
+       Shawn Mendes: There's Nothing Holdin' Me Back
+       ---------------------------------------------
+       I wanna follow her where she goes
+       I think about her and she knows it
+       I wanna let it take control
+       'Cause every time that she gets closer
 
 Note that paging is turned on by default. Use the ``--no-pager`` flag to
 turn it off.
 
-+-------------------------------+-----------------+
-| argument/API                  | ``lyricwiki``   |
-+===============================+=================+
-| positional (generic search)   | No              |
-+-------------------------------+-----------------+
-| ``-a``, ``--artist``          | Yes             |
-+-------------------------------+-----------------+
-| ``-t``, ``--title``           | Yes             |
-+-------------------------------+-----------------+
-| ``-w``, ``--words``           | No              |
-+-------------------------------+-----------------+
-| ``-l``, ``--show-list``       | No              |
-+-------------------------------+-----------------+
-| ``--limit``                   | No              |
-+-------------------------------+-----------------+
-| ``--no-pager``                | Yes             |
-+-------------------------------+-----------------+
-| ``-i``, ``--index``           | No              |
-+-------------------------------+-----------------+
+=========================== =============
+argument/API                ``lyricwiki``
+=========================== =============
+positional (generic search) No
+``-a``, ``--artist``        Yes
+``-t``, ``--title``         Yes
+``-w``, ``--words``         No
+``-l``, ``--show-list``     No
+``--limit``                 No
+``--no-pager``              Yes
+``-i``, ``--index``         No
+=========================== =============
 
 Author
 ------
 
--  Yi Qing Sim (`@ysim <https://github.com/ysim/>`__)
+-  (`@ysim <https://github.com/ysim/>`__)
 
 .. |Build Status| image:: https://travis-ci.org/ysim/songtext.svg?branch=master
    :target: https://travis-ci.org/ysim/songtext
