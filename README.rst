@@ -92,7 +92,7 @@ positional (generic search) No
 Author
 ------
 
--  (`@ysim <https://github.com/ysim/>`__)
+-  `@ysim <https://github.com/ysim/>`__
 
 .. |Build Status| image:: https://travis-ci.org/ysim/songtext.svg?branch=master
    :target: https://travis-ci.org/ysim/songtext
