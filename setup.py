@@ -40,6 +40,7 @@ setup(
     license='BSD',
     keywords='console command line music song lyrics',
     classifiers=[
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Operating System :: OS Independent',
         'License :: OSI Approved :: BSD License',
