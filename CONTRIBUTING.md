@@ -10,7 +10,7 @@ process of setting up a development environment.
 
 1. Make a virtualenv, activate it, and then install the pip dependencies:
 
-        $ pip install -r requirements.txt
+        $ pip install -r requirements-dev.txt
 
 1. Run tests: 
 
