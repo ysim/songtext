@@ -61,7 +61,7 @@ class LyricWikiSong(object):
             tag.drop_tree()
 
         # Remove HTML comments
-        real_string = etree.tostring(element, encoding="UTF-8")
+        real_string = etree.tostring(element, encoding="unicode")
         cleaned_html = clean_html(real_string)
 
         info_output = format_song_info(self.json['artist'], self.json['song'])
