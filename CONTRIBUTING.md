@@ -3,6 +3,13 @@
 New contributors are always welcome! This document will guide you through the
 process of setting up a development environment.
 
+[LyricWiki](http://api.wikia.com/wiki/LyricWiki_API/REST) is currently the
+only supported API.
+
+[LYRICSnMUSIC](http://www.lyricsnmusic.com/api) used to be an option but it
+appears to have been shut down. However, contributions for new API integrations
+are especially welcome.
+
 
 ### Instructions
 
