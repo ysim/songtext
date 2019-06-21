@@ -2,8 +2,8 @@ from lxml import html, etree
 from lxml.html.clean import clean_html
 import requests
 
-from errors import ArgumentError, SearchError
-from utils import format_song_info, output_song
+from libsongtext.errors import ArgumentError, SearchError
+from libsongtext.utils import format_song_info, output_song
 
 
 API_URL = 'http://lyrics.wikia.com/api.php'
