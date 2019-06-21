@@ -33,7 +33,7 @@ setup(
     install_requires=[
         'click==7.0',
         'cssselect==1.0.3',
-        'lxml==4.3.0',
+        'lxml==4.3.4',
         'requests==2.21.0',
     ],
 
