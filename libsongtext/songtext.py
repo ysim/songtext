@@ -7,10 +7,8 @@ import click
 from libsongtext.errors import ArgumentError, TrackIndexError, SearchError
 from libsongtext.properties import __version__
 
-
 DEFAULT_API = os.environ.get('SONGTEXT_DEFAULT_API', 'lyricwiki')
 AVAILABLE_APIS = ['lyricwiki']
-
 
 @click.command()
 @click.option('--api', default=DEFAULT_API, type=click.Choice(AVAILABLE_APIS))

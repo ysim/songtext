@@ -1,3 +1,5 @@
+import textwrap
+
 from lxml import html, etree
 from lxml.html.clean import clean_html
 import requests
@@ -27,18 +29,18 @@ class LyricWikiSong(object):
         request_params = self.PARAMS.copy()
         for k, v in SEARCH_PARAMETERS.items():
             if self.args[k] is None:
-                print(
-                    '\nThis API requires that you search with both the artist '
-                    'name (-a, --artist) and the song title (-t, --title). '
-                    'All other options will be ignored.\n\n'
-                )
+                print(textwrap.dedent("""
+                    This API requires that you search with both the artist
+                    name (-a, --artist) and the song title (-t, --title).
+                    All other options will be ignored.
+                    """))
                 raise ArgumentError
             request_params[v] = self.args[k]
 
         self.response = requests.get(API_URL, params=request_params)
         self.json = self.response.json()
         if not self.json['page_id']:
-            print("\nYour query did not match any tracks.\n\n")
+            print("\nYour query did not match any tracks.\n")
             raise SearchError
 
         self.url = self.json['url']
