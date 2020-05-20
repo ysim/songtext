@@ -24,6 +24,8 @@ setup(
 
     packages=find_packages(),
 
+    test_suite='tests',
+
     entry_points={
         'console_scripts': [
             'songtext = libsongtext.songtext:main',
