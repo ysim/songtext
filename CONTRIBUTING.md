@@ -17,7 +17,7 @@ are especially welcome.
 
 1. Make a virtualenv, activate it, and then install the pip dependencies:
 
-        $ pip install -r requirements-dev.txt
+        $ pip install -r requirements.txt
 
 1. Run tests: 
 
